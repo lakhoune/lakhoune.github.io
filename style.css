@@ -21,3 +21,22 @@ img.card-img-top:hover {
   transform: scale(1.05);
   width: fit-content;
 }
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -3 !important;
+}
+
+#main-title {
+  width: max-content;
+
+  background-color: rgba(255, 255, 255, 0.897);
+}
