@@ -1,0 +1,23 @@
+img.card-img-top {
+  height: 30vh;
+  width: auto;
+  transition: 1s;
+}
+img.card-img-top:hover {
+  height: 30vh;
+
+  width: auto;
+  transform: scale(1.1);
+}
+
+.card {
+  position: relative;
+  width: fit-content;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.card:hover {
+  height: fit-content;
+  transform: scale(1.05);
+  width: fit-content;
+}
