@@ -23,10 +23,18 @@ class Particle {
     this.pos = createVector(random(width), random(height));
     this.vel = createVector(random(-2, 2), random(-2, 2));
     this.size = 5;
+    this.topspeed = 4;
   }
 
   update() {
-    this.pos.add(this.vel);
+    let vec = createVector(
+      (3 * (mouseX - this.pos.x)) / width,
+      (3 * (mouseY - this.pos.y)) / height
+    );
+    let newVec = this.vel.copy();
+    newVec.add(vec);
+    newVec.limit(this.topspeed);
+    this.pos.add(newVec);
     this.edges();
   }
 
