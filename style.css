@@ -12,6 +12,7 @@ img.card-img-top:hover {
 
 .card {
   position: relative;
+  width: -moz-fit-content;
   width: fit-content;
   overflow: hidden;
   transition: 0.3s;
@@ -19,7 +20,8 @@ img.card-img-top:hover {
 .card:hover {
   height: fit-content;
   transform: scale(1.05);
-  width: fit-content;
+  /* width: fit-content;
+  width: -moz-fit-content; */
 }
 * {
   box-sizing: border-box;
