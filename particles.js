@@ -34,7 +34,9 @@ class Particle {
     let newVec = this.vel.copy();
     newVec.add(vec);
     newVec.limit(this.topspeed);
-    this.pos.add(newVec);
+    if (newVec.mag() > this.vel.mag()) this.pos.add(newVec);
+    else this.pos.add(this.vel);
+
     this.edges();
   }
 
