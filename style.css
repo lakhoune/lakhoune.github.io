@@ -45,3 +45,6 @@ canvas {
 body{
   overflow-x: hidden;
 }
+canvas{
+  position:fixed
+}
