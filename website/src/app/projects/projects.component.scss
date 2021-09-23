@@ -1,0 +1,31 @@
+.example-header-image {
+  background-size: cover;
+}
+img.card-img-top {
+  width: auto;
+  transition: 1s;
+  background-size: cover;
+}
+img.card-img-top:hover {
+  height: 30vh;
+
+  width: auto;
+  transform: scale(1.1);
+}
+
+.project {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.project:hover {
+  height: fit-content;
+  transform: scale(1.05);
+  /* width: fit-content;
+  width: -moz-fit-content; */
+}
+* {
+  box-sizing: border-box;
+}
