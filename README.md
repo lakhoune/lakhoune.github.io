@@ -1,6 +1,7 @@
 # Website
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
+The page is served from the ``docs`` directory. The projects is built automatically on pushes to the master branch.
 
 ## Development server
 
