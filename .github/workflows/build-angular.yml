@@ -1,8 +1,7 @@
 name: Build static files for website
 
 on:
-  push:
-    branches: [ master ]
+  create:
     tags: [v*]
 jobs:
   build:
