@@ -11,7 +11,7 @@ $primary-palette: map.get($color-config, "primary");
 mat-sidenav-content {
   height: 100vh;
 
-  .container {
+  .wrapper {
     height: 100%;
   }
 

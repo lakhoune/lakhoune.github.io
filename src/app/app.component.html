@@ -18,55 +18,56 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar class="sticky-top" color="primary">
-      <button
-        *ngIf="!environment.production"
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with menu icon"
-        (click)="drawer.toggle()"
-      >
-        <span class="material-icons">menu</span>
-      </button>
-      <span>Lakhoune</span>
-      <span class="example-spacer"></span>
+    <div class="wrapper">
+      <mat-toolbar class="sticky-top" color="primary">
+        <button
+          *ngIf="!environment.production"
+          mat-icon-button
+          class="example-icon"
+          aria-label="Example icon-button with menu icon"
+          (click)="drawer.toggle()"
+        >
+          <span class="material-icons">menu</span>
+        </button>
+        <span>Lakhoune</span>
+        <span class="example-spacer"></span>
 
-      <button
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with share icon"
-        (click)="onShare()"
-      >
-        <span class="material-icons">share</span>
-      </button>
-    </mat-toolbar>
+        <button
+          mat-icon-button
+          class="example-icon"
+          aria-label="Example icon-button with share icon"
+          (click)="onShare()"
+        >
+          <span class="material-icons">share</span>
+        </button>
+      </mat-toolbar>
 
-    <div class="container">
-      <h1>Welcome</h1>
-      <a href="http://lakhoune.com" class="mr-1">http://lakhoune.com</a> is
-      owned by Ben Lakhoune
-      <br />
-      <div class="row my-2">
-        <div class="col col-sm-8 mb-4" id="particles">
-          <app-projects></app-projects>
-        </div>
+      <div class="container">
+        <h1>Welcome</h1>
+        <a href="http://lakhoune.com" class="mr-1">http://lakhoune.com</a> is
+        owned by Ben Lakhoune
+        <br />
+        <div class="row my-2">
+          <div class="col col-sm-8 mb-4" id="particles">
+            <app-projects></app-projects>
+          </div>
 
-        <div class="col col-sm-4">
-          <h2>Other</h2>
-          <aside class="card shadow">
-            <iframe
-              style="border-radius: 4px"
-              src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM"
-              height="380"
-              frameborder="0"
-              allowtransparency="true"
-              allow="encrypted-media"
-            ></iframe>
-          </aside>
+          <div class="col col-sm-4">
+            <h2>Other</h2>
+            <aside class="card shadow">
+              <iframe
+                style="border-radius: 4px"
+                src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM"
+                height="380"
+                frameborder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+            </aside>
+          </div>
         </div>
       </div>
     </div>
-    <div class="footer-spacer"></div>
     <footer>
       <div class="container row pt-2 pb-2">
         <div class="col contacts">
