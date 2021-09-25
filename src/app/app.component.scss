@@ -18,7 +18,7 @@ mat-sidenav-content {
   footer {
     font-size: smaller;
 
-    width: 100vw;
+    width: 100%;
 
     background-color: mat.get-color-from-palette($primary-palette, "darker");
     color: mat.get-color-from-palette($primary-palette, "darker-contrast");
