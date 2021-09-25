@@ -10,12 +10,16 @@ $primary-palette: map.get($color-config, "primary");
 }
 mat-sidenav-content {
   height: 100vh;
+
+  .container {
+    height: 100%;
+  }
+
   footer {
     font-size: smaller;
-    position: sticky;
-    width: 100%;
-    left: 0;
-    bottom: 0;
+
+    width: 100vw;
+
     background-color: mat.get-color-from-palette($primary-palette, "darker");
     color: mat.get-color-from-palette($primary-palette, "darker-contrast");
 
