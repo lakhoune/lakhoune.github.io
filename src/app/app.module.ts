@@ -9,8 +9,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { ProjectComponent } from './projects/project/project.component';
 @NgModule({
-  declarations: [AppComponent, ProjectsComponent],
+  declarations: [AppComponent, ProjectsComponent, ProjectComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

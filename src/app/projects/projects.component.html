@@ -1,43 +1,6 @@
 <div class="row">
   <h2>Projects</h2>
   <div *ngFor="let project of projects" class="col">
-    <mat-card class="shadow mb-2 project">
-      <mat-card-header>
-        <mat-card-title>{{ project.title }}</mat-card-title>
-        <mat-card-subtitle>{{ project.subtitle }}</mat-card-subtitle>
-      </mat-card-header>
-      <a [href]="project.page.href" target="_blank" rel="noopener noreferrer">
-        <img
-          mat-card-image
-          [src]="project.previewImgSrc"
-          class="card-img-top"
-          class="thumbnail"
-          alt="website preview"
-        />
-      </a>
-      <mat-card-content>
-        <div
-          *ngIf="project.page.description"
-          [innerHTML]="project.page.description"
-        ></div>
-      </mat-card-content>
-      <mat-card-actions>
-        <a
-          [href]="project.page.href"
-          mat-button
-          target="_blank"
-          rel="noopener noreferrer"
-          >Open <span class="material-icons"> open_in_new </span></a
-        >
-        <a
-          *ngIf="project.source"
-          [href]="project.source.href"
-          mat-button
-          target="_blank"
-          rel="noopener noreferrer"
-          >View Source <span class="material-icons"> open_in_new </span></a
-        >
-      </mat-card-actions>
-    </mat-card>
+    <app-project [project]="project"></app-project>
   </div>
 </div>
