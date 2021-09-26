@@ -18,6 +18,8 @@ jobs:
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
     - name: Build the app
       run: npm install && npm run build
+    - name: Move CNAME file to docs
+      run: cp CNAME ./docs
     - name: Commit files
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
