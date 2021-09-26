@@ -12,6 +12,9 @@ mat-sidenav-content {
   height: 100vh;
 
   .wrapper {
+    mat-toolbar {
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.219);
+    }
     min-height: 100%;
   }
 
