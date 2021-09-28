@@ -6,7 +6,7 @@ export const projects: Project[] = [
     subtitle: 'Community Analytics',
     previewImgSrc: 'assets/mobsos-preview.png',
     page: {
-      href: 'https://sbf-dev.tech4comp.dbis.rwth-aachen.de/monitor/join/9f003333c529895fd5aba1fd0e25c32ce9a3c006c261424b55f7a2968ebc556d61823055009e8ee85c28b86f4131c4a329c0a93612c5782b5195e169b0c8034d/i5.las2peer.services.tmitocar.TmitocarService/senpai',
+      href: 'https://sbf-dev.tech4comp.dbis.rwth-aachen.de/monitor/join/cb276112c6c7f5e1bbf11a4b136c6f44bcd36bcbb69ecb59274a4f71ee51eadd06cf3b6ca5e50ca154d8680e4d7a081265741f039da19c19f6dd176c82b03a87/i5.las2peer.services.tmitocar.TmitocarService/lakhoune',
       description: 'Current Project',
     },
     source: {
