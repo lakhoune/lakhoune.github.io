@@ -16,7 +16,7 @@ export const projects: Project[] = [
   {
     title: 'StudyGrow Cards',
     subtitle: 'Digital Flashcards',
-    previewImgSrc: 'assets/cards.website.preview.png',
+    previewImgSrc: 'assets/cards-preview.png',
     page: {
       href: 'https://studydrive.me',
       description:
