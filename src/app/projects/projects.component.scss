@@ -29,8 +29,3 @@ img.card-img-top:hover {
 * {
   box-sizing: border-box;
 }
-.row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: masonry;
-}

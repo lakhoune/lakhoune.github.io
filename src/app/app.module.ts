@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { ProjectComponent } from './projects/project/project.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { SocialsComponent } from './socials/socials.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { SocialsComponent } from './socials/socials.component';
     MatCardModule,
     MatSidenavModule,
     MatListModule,
+    MatTooltipModule,
     HttpClientModule,
   ],
   providers: [],
