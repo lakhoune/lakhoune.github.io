@@ -13,28 +13,16 @@ mat-sidenav-content {
   .wrapper {
     mat-toolbar {
       box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.219);
-      background-color: mat.get-color-from-palette($primary-palette,"darker");
-      color: mat.get-color-from-palette($primary-palette,"darker-contrast");
+      background-color: mat.get-color-from-palette($primary-palette, "darker");
+      color: mat.get-color-from-palette($primary-palette, "darker-contrast");
     }
     min-height: 100%;
-
-    .float-left {
-      top: 0;
-      left: 0;
-      bottom: 0;
-      height: 200px;
-      background-color: mat.get-color-from-palette($primary-palette, "lighter");
-      color: mat.get-color-from-palette($primary-palette, "lighter-contrast");
-      position: fixed;
-      margin-top: auto;
-      margin-bottom: auto;
-    }
   }
 
-  .socials{
+  .socials {
     font-size: xx-large;
   }
- 
+
   footer {
     font-size: smaller;
 
