@@ -1,0 +1,19 @@
+<aside class="float-left rounded-end p-2">
+  <div class="d-flex flex-column socials">
+    <a
+      *ngFor="let social of socials"
+      [href]="social.link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        *ngIf="getType(social.logo) === 'object'; else inline"
+        [src]="getSource(social.logo)"
+        alt=""
+      />
+      <ng-template #inline>
+        <i [class]="social.logo"></i>
+      </ng-template>
+    </a>
+  </div>
+</aside>

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,8 +11,16 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { ProjectComponent } from './projects/project/project.component';
+import { AboutMeComponent } from './about-me/about-me.component';
+import { SocialsComponent } from './socials/socials.component';
 @NgModule({
-  declarations: [AppComponent, ProjectsComponent, ProjectComponent],
+  declarations: [
+    AppComponent,
+    ProjectsComponent,
+    ProjectComponent,
+    AboutMeComponent,
+    SocialsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,6 +30,7 @@ import { ProjectComponent } from './projects/project/project.component';
     MatCardModule,
     MatSidenavModule,
     MatListModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

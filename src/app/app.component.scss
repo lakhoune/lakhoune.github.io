@@ -10,14 +10,29 @@ $primary-palette: map.get($color-config, "primary");
 }
 mat-sidenav-content {
   height: 100vh;
-
   .wrapper {
     mat-toolbar {
       box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.219);
     }
     min-height: 100%;
+
+    .float-left {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      height: 200px;
+      background-color: mat.get-color-from-palette($primary-palette, "lighter");
+      color: mat.get-color-from-palette($primary-palette, "lighter-contrast");
+      position: fixed;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
   }
 
+  .socials{
+    font-size: xx-large;
+  }
+ 
   footer {
     font-size: smaller;
 
