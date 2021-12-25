@@ -34,11 +34,10 @@
 
         <button
           mat-icon-button
-          class="example-icon"
           aria-label="Example icon-button with share icon"
           (click)="onShare()"
         >
-          <span class="material-icons">share</span>
+          <i class="bi bi-share-fill fs-4"></i>
         </button>
       </mat-toolbar>
 
@@ -55,26 +54,26 @@
           <app-about-me></app-about-me>
         </section>
 
-        <div class="row mt-2">
-          <div class="col col-sm-8 mb-4" id="particles">
-            <app-projects></app-projects>
-          </div>
+        <section>
+          <h2>Projects</h2>
+          <app-projects></app-projects>
+        </section>
 
-          <div class="col col-sm-4">
-            <h2>Other</h2>
-            <aside class="card shadow">
-              <iframe
-                style="border-radius: 4px"
-                src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM"
-                height="380"
-                frameborder="0"
-                allowtransparency="true"
-                allow="encrypted-media"
-              ></iframe>
-            </aside>
-          </div>
-        </div>
+        <aside>
+          <h2>Music</h2>
+          <iframe
+            class="shadow"
+            style="border-radius: 34px"
+            src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM"
+            height="380"
+            frameborder="0"
+            allowtransparency="true"
+            allow="encrypted-media"
+          ></iframe>
+        </aside>
+
         <app-socials></app-socials>
+        <div class="mb-2"></div>
       </div>
     </div>
     <footer>

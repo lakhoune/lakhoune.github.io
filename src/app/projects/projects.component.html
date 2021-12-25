@@ -1,8 +1,5 @@
-<section>
-  <div class="row">
-    <h2>Projects</h2>
-    <div *ngFor="let project of projects" class="col">
-      <app-project [project]="project"></app-project>
-    </div>
+<div class="row">
+  <div *ngFor="let project of projects">
+    <app-project [project]="project"></app-project>
   </div>
-</section>
+</div>
