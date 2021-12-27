@@ -10,51 +10,50 @@ $primary-palette: map.get($color-config, "primary");
 }
 
 .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("/assets/19366.jpg");
-    background-size: cover;
-    opacity: 0.4;
-    z-index: -1;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/assets/19366.jpg");
+  background-size: cover;
+  opacity: 0.4;
+  z-index: -1;
+}
 
-
-  .wrapper {
-    mat-toolbar {
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.219);
-      background-color: mat.get-color-from-palette($primary-palette, "darker");
-      color: mat.get-color-from-palette($primary-palette, "darker-contrast");
-    }
-    min-height: 100%;
-  }
-
-  .socials {
-    font-size: xx-large;
-  }
-
-  footer {
-    font-size: smaller;
-
-    width: 100%;
-
+.wrapper {
+  mat-toolbar {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.219);
     background-color: mat.get-color-from-palette($primary-palette, "darker");
     color: mat.get-color-from-palette($primary-palette, "darker-contrast");
+  }
+  min-height: 100%;
+}
 
-    a {
-      color: mat.get-color-from-palette($primary-palette, "darker-contrast");
-    }
-    .contacts {
-      width: max-content;
-      .contact {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        :last-child {
-          margin-left: 5px;
-        }
+.socials {
+  font-size: xx-large;
+}
+
+footer {
+  font-size: smaller;
+
+  width: 100%;
+
+  background-color: mat.get-color-from-palette($primary-palette, "darker");
+  color: mat.get-color-from-palette($primary-palette, "darker-contrast");
+
+  a {
+    color: mat.get-color-from-palette($primary-palette, "darker-contrast");
+  }
+  .contacts {
+    width: max-content;
+    .contact {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      :last-child {
+        margin-left: 5px;
       }
     }
   }
+}
