@@ -14,6 +14,8 @@ import { ProjectComponent } from './projects/project/project.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { SocialsComponent } from './socials/socials.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatListModule,
     MatTooltipModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
