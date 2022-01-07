@@ -3,7 +3,12 @@
     <mat-card-title>{{ project.title }}</mat-card-title>
     <mat-card-subtitle>{{ project.subtitle }}</mat-card-subtitle>
   </mat-card-header>
-  <a [href]="project.page.href" target="_blank" rel="noopener noreferrer">
+  <a
+    [href]="project.page.href"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="img-link"
+  >
     <img
       mat-card-image
       [src]="project.previewImgSrc"
