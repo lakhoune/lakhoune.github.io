@@ -1,4 +1,4 @@
-<mat-sidenav-container class="example-container" [hasBackdrop]="true">
+<!-- <mat-sidenav-container class="example-container" [hasBackdrop]="true">
   <mat-sidenav #drawer mode="push">
     <mat-nav-list>
       <a mat-list-item routerLink="/">
@@ -17,10 +17,13 @@
       </ng-container>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <div class="wrapper">
-      <mat-toolbar class="sticky-top" color="primary">
-        <button
+  <mat-sidenav-content> -->
+<div class="background">
+  <a href="http://www.freepik.com">Designed by starline / Freepik</a>
+</div>
+<div class="wrapper">
+  <mat-toolbar class="sticky-top">
+    <!-- <button
           *ngIf="!environment.production"
           mat-icon-button
           class="example-icon"
@@ -28,49 +31,43 @@
           (click)="drawer.toggle()"
         >
           <span class="material-icons">menu</span>
-        </button>
-        <span>Lakhoune</span>
-        <span class="example-spacer"></span>
+        </button> -->
+    <span>Lakhoune</span>
+    <span class="example-spacer"></span>
 
-        <button
-          mat-icon-button
-          class="example-icon"
-          aria-label="Example icon-button with share icon"
-          (click)="onShare()"
-        >
-          <span class="material-icons">share</span>
-        </button>
-      </mat-toolbar>
+    <button
+      mat-icon-button
+      aria-label="Example icon-button with share icon"
+      (click)="onShare()"
+    >
+      <i class="bi bi-share-fill fs-4"></i>
+    </button>
+  </mat-toolbar>
 
-      <div class="container mt-2">
-        <h1>Welcome</h1>
-        <a href="http://lakhoune.com" class="mr-1">http://lakhoune.com</a> is
-        owned by Ben Lakhoune
-        <br />
-        <div class="row mt-2">
-          <div class="col col-sm-8 mb-4" id="particles">
-            <app-projects></app-projects>
-          </div>
+  <div class="container mt-2">
+    <section>
+      <h2>About me</h2>
+      <app-about-me></app-about-me>
+    </section>
 
-          <div class="col col-sm-4">
-            <h2>Other</h2>
-            <aside class="card shadow">
-              <iframe
-                style="border-radius: 4px"
-                src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM"
-                height="380"
-                frameborder="0"
-                allowtransparency="true"
-                allow="encrypted-media"
-              ></iframe>
-            </aside>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer>
+    <section>
+      <h2>Projects</h2>
+      <app-projects></app-projects>
+    </section>
+
+    <app-socials></app-socials>
+    <br />
+  </div>
+</div>
+<!-- <footer>
       <div class="container row py-2">
-        <div class="col contacts">
+        <div class="col-md-6">
+         <h1>Welcome</h1>
+          <a href="http://lakhoune.com" class="mr-1">http://lakhoune.com</a> is
+          owned by Ben Lakhoune
+          <br />
+        </div>
+        <div class="col-md-6 contacts">
           <h5>Social</h5>
 
           <a href="https://github.com/lakhoune" target="_blank" class="contact"
@@ -95,6 +92,6 @@
           </a>
         </div>
       </div>
-    </footer>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    </footer> -->
+<!-- </mat-sidenav-content>
+</mat-sidenav-container> -->

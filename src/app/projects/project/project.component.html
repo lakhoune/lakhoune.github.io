@@ -20,19 +20,21 @@
   </mat-card-content>
   <mat-card-actions>
     <a
+      class="m-0"
       [href]="project.page.href"
       mat-button
       target="_blank"
       rel="noopener noreferrer"
-      >Open <span class="material-icons"> open_in_new </span></a
-    >
+      >Open <i class="bi bi-box-arrow-up-right"></i
+    ></a>
     <a
+      class="m-0"
       *ngIf="project.source"
       [href]="project.source.href"
       mat-button
       target="_blank"
       rel="noopener noreferrer"
-      >View Source <span class="material-icons"> open_in_new </span></a
-    >
+      >View Source <i class="bi bi-box-arrow-up-right"></i
+    ></a>
   </mat-card-actions>
 </mat-card>
