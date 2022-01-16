@@ -12,6 +12,25 @@ img.card-img-top:hover {
   transform: scale(1.1);
 }
 
+mat-card{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+mat-card-actions {
+  margin-top:auto
+}
+
+.img-link{
+   height: 55%;
+}
+
+
+.thumbnail{
+  height: 100%;
+}
+
 .project {
   position: relative;
   width: -moz-fit-content;
