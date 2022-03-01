@@ -23,19 +23,21 @@
         >AVL academic circle</a
       >
     </p>
-    <!-- <div class="timeline">
-      <div class="container left card shadow">
-        <div class="content">
-          <h2>2017</h2>
-          <p>Lorem ipsum..</p>
-        </div>
-      </div>
-      <div class="container right card shadow">
-        <div class="content">
-          <h2>2016</h2>
-          <p>Lorem ipsum..</p>
-        </div>
-      </div>
-    </div> -->
   </mat-card-content>
 </mat-card>
+
+<div class="timeline py-3">
+  <div
+    *ngFor="let experience of experiences; let i = index"
+    [class]="'container ' + (i % 2 === 0 ? 'left' : 'right')"
+  >
+    <div class="content shadow">
+      <h2>{{ experience.year }}</h2>
+      <ul *ngIf="experience.experiences">
+        <li *ngFor="let e of experience.experiences">
+          {{ e.title }} on <strong>{{ e.date | date }}</strong>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

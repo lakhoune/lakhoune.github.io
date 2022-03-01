@@ -6,6 +6,8 @@ $color-config: mat.get-color-config($theme);
 $primary-palette: map.get($color-config, "primary");
 $secondary-palette: map.get($color-config, "accent");
 
+$top-offset: 22px;
+
 /* The actual timeline (the vertical ruler) */
 .timeline {
   position: relative;
@@ -21,6 +23,7 @@ $secondary-palette: map.get($color-config, "accent");
   top: 0;
   bottom: 0;
   left: 50%;
+ 
 }
 
 /* Container around content */
@@ -30,7 +33,7 @@ $secondary-palette: map.get($color-config, "accent");
   position: relative;
   background-color: inherit;
   width: 50%;
-//   border: 4px solid mat.get-color-from-palette($primary-palette);
+  //   border: 4px solid mat.get-color-from-palette($primary-palette);
 }
 
 /* The circles on the timeline */
@@ -62,7 +65,7 @@ $secondary-palette: map.get($color-config, "accent");
   content: " ";
   height: 0;
   position: absolute;
-  top: 22px;
+  top: $top-offset;
   width: 0;
   z-index: 1;
   right: 30px;
@@ -76,7 +79,7 @@ $secondary-palette: map.get($color-config, "accent");
   content: " ";
   height: 0;
   position: absolute;
-  top: 22px;
+  top: $top-offset;
   width: 0;
   z-index: 1;
   left: 30px;
@@ -87,7 +90,7 @@ $secondary-palette: map.get($color-config, "accent");
 
 /* Fix the circle for containers on the right side */
 .right::after {
-  left: -16px;
+  left: -10px;
 }
 
 /* The actual content */
