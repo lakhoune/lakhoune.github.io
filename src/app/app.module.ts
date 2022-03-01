@@ -16,6 +16,7 @@ import { SocialsComponent } from './socials/socials.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ExperienceComponent } from './experience/experience.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { environment } from '../environments/environment';
     ProjectComponent,
     AboutMeComponent,
     SocialsComponent,
+    ExperienceComponent,
   ],
   imports: [
     BrowserModule,
