@@ -1,7 +1,7 @@
 export const experiences: ExperienceYear[] = [
   {
     year: 2022,
-    experiences: [{ title: 'Bachelors Degree', date: new Date('2022-02-09') }],
+    experiences: [{ title: 'Bachelors Degree', date: new Date('2022-02-07') }],
   },
   {
     year: 2021,
@@ -20,15 +20,6 @@ export const experiences: ExperienceYear[] = [
     year: 2020,
     experiences: [
       { title: 'Launch of Cards page', date: new Date('2020-02-07') },
-    ],
-  },
-  { year: 2019 },
-  { year: 2018 },
-  {
-    year: 2017,
-    experiences: [
-      { title: 'Highschool Graduation' },
-      { title: 'Starting University' },
     ],
   },
 ];
