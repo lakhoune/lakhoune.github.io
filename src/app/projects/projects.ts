@@ -32,7 +32,7 @@ export const projects: Project[] = [
     subtitle: 'Digital Flashcards',
     previewImgSrc: 'assets/cards-preview.webp',
     page: {
-      href: 'https://sleepy-cove-96643.herokuapp.com/',
+      href: 'https://cards.lakhoune.com/',
       description:
         'This application can be used to create flashcards and share them with the community',
     },
