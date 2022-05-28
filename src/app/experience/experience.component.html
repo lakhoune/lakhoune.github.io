@@ -1,0 +1,43 @@
+<mat-card class="shadow">
+  <mat-card-header> </mat-card-header>
+
+  <mat-card-content class="my-2">
+    <p>
+      Currently working as a research assistant at
+      <a
+        href="https://github.com/rwth-acis"
+        target="_blank"
+        rel="noopener noreferrer"
+        >@rwth-acis</a
+      >
+      working on
+      <a href="http://las2peer.org" target="_blank" rel="noopener noreferrer"
+        >las2peer</a
+      >
+      for the
+      <a href="https://tech4comp.de" target="_blank" rel="noopener noreferrer"
+        >tech4comp</a
+      >
+      project, as well as Web master for the
+      <a href="https://avl.lu" target="_blank" rel="noopener noreferrer"
+        >AVL academic circle</a
+      >
+    </p>
+  </mat-card-content>
+</mat-card>
+
+<div class="timeline py-3">
+  <div
+    *ngFor="let experience of experiences; let i = index"
+    [class]="'container ' + (i % 2 === 0 ? 'left' : 'right')"
+  >
+    <div class="content shadow">
+      <h2>{{ experience.year }}</h2>
+      <ul *ngIf="experience.experiences">
+        <li *ngFor="let e of experience.experiences">
+          {{ e.title }} on <strong>{{ e.date | date }}</strong>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
