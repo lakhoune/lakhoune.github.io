@@ -8,7 +8,7 @@ export const projects: Project[] = [
     page: {
       href: 'https://sbf-dev.tech4comp.dbis.rwth-aachen.de',
       description:
-        'A framework for building bots for social media platforms. It allows for intuitive approach to bot development',
+        'A framework for building bots for social media platforms. It provides an intuitive approach to bot development',
     },
     source: {
       href: 'https://github.com/rwth-acis/Social-Bot-Framework',
