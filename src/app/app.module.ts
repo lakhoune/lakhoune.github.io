@@ -17,6 +17,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ExperienceComponent } from './experience/experience.component';
+import { WifiQrComponent } from './wifi-qr/wifi-qr.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +30,7 @@ import { ExperienceComponent } from './experience/experience.component';
     AboutMeComponent,
     SocialsComponent,
     ExperienceComponent,
+    WifiQrComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,14 +40,18 @@ import { ExperienceComponent } from './experience/experience.component';
     MatButtonModule,
     MatCardModule,
     MatSidenavModule,
+    MatInputModule,
     MatListModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
     MatTooltipModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
   providers: [],
