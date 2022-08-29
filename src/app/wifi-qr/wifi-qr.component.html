@@ -1,10 +1,11 @@
 <h2>QR code Generator</h2>
+Generate a QR code for your WiFi network. Print it out and share it with your
+friends.
 <mat-card>
   <form (submit)="generateQR()" [formGroup]="form" class="d-flex flex-column">
     <mat-form-field>
       <mat-label>Wifi name (ssid)</mat-label>
       <input matInput formControlName="ssid" required />
-      <mat-hint>Hint</mat-hint>
     </mat-form-field>
     <br />
     <mat-form-field>
