@@ -2,6 +2,15 @@ import { Project } from '../models/project.model';
 
 export const projects: Project[] = [
   {
+    title: 'Automatic Conformance Checking',
+    previewImgSrc: 'assets/acc.png',
+    page: {
+      href: 'http://pyinsights.westeurope.azurecontainer.io/',
+      description:
+        'A framework providing automatic conformance diagnostics on event logs uploaded to Celonis. (A Celonis account and application key is required)',
+    },
+  },
+  {
     title: 'Social Bot Framework',
     subtitle: 'Bot modeling and development',
     previewImgSrc: 'assets/sbf-preview.webp',

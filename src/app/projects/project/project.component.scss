@@ -12,6 +12,10 @@ img.card-img-top:hover {
   transform: scale(1.1);
 }
 
+.mat-card-image:first-child {
+    margin-top: 0 !important;
+}
+
 mat-card{
   display: flex;
   flex-direction: column;
