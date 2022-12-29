@@ -20,6 +20,8 @@ jobs:
       run: npm install && npm run build
     - name: Move CNAME file to docs
       run: cp CNAME ./docs
+    - name: Move 404.html file to docs
+      run: cp 404.html ./docs
     - name: Commit files
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
