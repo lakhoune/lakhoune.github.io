@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1672333898366,
+  "timestamp": 1672334316624,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -74,7 +74,7 @@
     "/assets/sbf-preview.png": "8fded91e5c23d302d3aa2c1568c5a13ba0efc6a4",
     "/assets/sbf-preview.webp": "fb56a92cfa4a0aa6eef8bea2c442ba39a6a496d2",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "b40f5fd801f90616e4ff612b86cb7a81cd2ca52d",
+    "/index.html": "b0e9118195985f714b3647128b059edfcebadc69",
     "/main.06ab60308e2b70d4.js": "ae2672729ddc31b6b59584bf63c405a926aa26e7",
     "/manifest.webmanifest": "bcb80908ddbf6db6dff72cdee266593ad8bc40f2",
     "/polyfills.66b37a27e0401357.js": "564950476c195ed90c0f022f028f94025ac51ad8",
