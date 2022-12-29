@@ -7,7 +7,7 @@ import { experiences } from './experience';
   styleUrls: ['./experience.component.scss'],
 })
 export class ExperienceComponent implements OnInit {
-  experiences = experiences;
+  experiences = experiences.sort((a, b) => b.year - a.year);
   constructor() {}
 
   ngOnInit(): void {}
