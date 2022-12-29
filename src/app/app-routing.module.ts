@@ -6,13 +6,14 @@ import { WifiQrComponent } from './wifi-qr/wifi-qr.component';
 
 const routes: Routes = [
   {
-    path: 'wifi-qr',
-    component: WifiQrComponent,
-  },
-  {
     path: '',
     component: HomeComponent,
   },
+  {
+    path: 'wifi-qr',
+    component: WifiQrComponent,
+  },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
