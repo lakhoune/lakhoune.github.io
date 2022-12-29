@@ -22,6 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { MatInputModule } from '@angular/material/input';
     SocialsComponent,
     ExperienceComponent,
     WifiQrComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

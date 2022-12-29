@@ -8,7 +8,13 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
   title = 'website';
-  links: { url: string; icon: string; name: string }[] = [];
+  links: { url: string; icon: string; name: string }[] = [
+    {
+      url: '/wifi-qr',
+      icon: 'qr_code_2',
+      name: 'Wifi QR Generator',
+    },
+  ];
   environment = environment;
   onShare() {
     const baseUrl = window.location.href;

@@ -9,6 +9,14 @@ $primary-palette: map.get($color-config, "primary");
   flex: 1 1 auto;
 }
 
+#website-header{
+  text-decoration: none;
+  color: mat.get-color-from-palette($primary-palette, "darker-contrast");
+}
+
+
+
+
 .background {
   position: fixed;
   top: 0;

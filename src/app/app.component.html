@@ -1,12 +1,12 @@
-<!-- <mat-sidenav-container class="example-container" [hasBackdrop]="true">
-  <mat-sidenav #drawer mode="push">
+<mat-sidenav-container class="example-container" [hasBackdrop]="true">
+  <mat-sidenav #drawer [fixedInViewport]="true" mode="push">
     <mat-nav-list>
       <a mat-list-item routerLink="/">
         <span class="material-icons">home</span> <span>Home</span>
       </a>
 
       <ng-container *ngFor="let link of links">
-        <a href="{{ link.url }}">
+        <a mat-list-item routerLink="{{ link.url }}">
           <span class="material-icons">
             {{ link.icon }}
           </span>
@@ -17,56 +17,37 @@
       </ng-container>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content> -->
-<div class="background">
-  <a href="http://www.freepik.com">Designed by starline / Freepik</a>
-</div>
-<div class="wrapper">
-  <mat-toolbar class="sticky-top">
-    <!-- <button
-          *ngIf="!environment.production"
+  <mat-sidenav-content>
+    <div class="background">
+      <a href="http://www.freepik.com">Designed by starline / Freepik</a>
+    </div>
+    <div class="wrapper">
+      <mat-toolbar class="sticky-top">
+        <button
           mat-icon-button
           class="example-icon"
           aria-label="Example icon-button with menu icon"
           (click)="drawer.toggle()"
         >
           <span class="material-icons">menu</span>
-        </button> -->
-    <span>Lakhoune</span>
-    <span class="example-spacer"></span>
+        </button>
+        <a routerLink="/" id="website-header">Lakhoune</a>
+        <span class="example-spacer"></span>
 
-    <button
-      mat-icon-button
-      aria-label="Example icon-button with share icon"
-      (click)="onShare()"
-    >
-      <i class="bi bi-share-fill fs-4"></i>
-    </button>
-  </mat-toolbar>
+        <button
+          mat-icon-button
+          aria-label="Example icon-button with share icon"
+          (click)="onShare()"
+        >
+          <i class="bi bi-share-fill fs-4"></i>
+        </button>
+      </mat-toolbar>
 
-  <div class="container mt-2">
-    <section>
-      <h2>About me</h2>
-      <app-about-me></app-about-me>
-    </section>
-
-    <section>
-      <h2>Experience</h2>
-      <app-experience></app-experience>
-    </section>
-
-    <section>
-      <h2>Projects</h2>
-      <app-projects></app-projects>
-    </section>
-
-    <section><app-wifi-qr></app-wifi-qr></section>
-
-    <app-socials></app-socials>
-    <br />
-  </div>
-</div>
-<!-- <footer>
+      <div class="container mt-2" style="height: 100vh">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <!-- <footer>
       <div class="container row py-2">
         <div class="col-md-6">
          <h1>Welcome</h1>
@@ -100,5 +81,5 @@
         </div>
       </div>
     </footer> -->
-<!-- </mat-sidenav-content>
-</mat-sidenav-container> -->
+  </mat-sidenav-content></mat-sidenav-container
+>
