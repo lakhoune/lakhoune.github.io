@@ -28,7 +28,7 @@ export const projects: Project[] = [
     subtitle: 'Community Analytics',
     previewImgSrc: 'assets/mobsos-preview.webp',
     page: {
-      href: 'https://monitor.tech4comp.dbis.rwth-aachen.de/welcome'
+      href: 'https://monitor.tech4comp.dbis.rwth-aachen.de/welcome',
       description:
         'MobSOS is a framework for community information systems (CIS) success modeling. The goal is to increase success awareness in a community.',
     },
