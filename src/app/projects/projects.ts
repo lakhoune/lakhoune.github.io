@@ -5,7 +5,7 @@ export const projects: Project[] = [
     title: 'Automatic Conformance Checking',
     previewImgSrc: 'assets/acc.png',
     page: {
-      href: 'http://pyinsights.westeurope.azurecontainer.io/',
+      href: 'https://pyinsights.tech/',
       description:
         'A framework providing automatic conformance diagnostics on event logs uploaded to Celonis. (A Celonis account and application key is required)',
     },
