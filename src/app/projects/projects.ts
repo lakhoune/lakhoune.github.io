@@ -9,6 +9,9 @@ export const projects: Project[] = [
       description:
         'A framework providing automatic conformance diagnostics on event logs uploaded to Celonis. (A Celonis account and application key is required)',
     },
+    source: {
+      href: 'https://github.com/lakhoune/Automatic-Conformance-Checking',
+    },
   },
   {
     title: 'Social Bot Framework',
