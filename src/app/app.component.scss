@@ -9,11 +9,10 @@ $primary-palette: map.get($color-config, "primary");
   flex: 1 1 auto;
 }
 
-#website-header{
+#website-header {
   text-decoration: none;
   color: mat.get-color-from-palette($primary-palette, "darker-contrast");
 }
-
 
 .background {
   position: fixed;
@@ -25,7 +24,7 @@ $primary-palette: map.get($color-config, "primary");
   background-size: cover;
   opacity: 0.4;
   z-index: -1;
-  a{
+  a {
     position: absolute;
     bottom: 0;
   }
@@ -36,6 +35,16 @@ $primary-palette: map.get($color-config, "primary");
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.219);
     background-color: mat.get-color-from-palette($primary-palette, "darker");
     color: mat.get-color-from-palette($primary-palette, "darker-contrast");
+  }
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  min-height: 100%;
+  .footer {
+    position: absolute;
+    bottom: 0;
   }
 }
 
