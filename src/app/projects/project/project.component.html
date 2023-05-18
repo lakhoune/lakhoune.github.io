@@ -1,7 +1,10 @@
-<mat-card class="shadow project h-100">
+<mat-card class="shadow project h-100 w-100">
   <mat-card-header>
     <mat-card-title>{{ project.title }}</mat-card-title>
-    <mat-card-subtitle>{{ project.subtitle }}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="project.subtitle">{{
+      project.subtitle
+    }}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="!project.subtitle"><br /></mat-card-subtitle>
   </mat-card-header>
   <a
     [href]="project.page.href"
