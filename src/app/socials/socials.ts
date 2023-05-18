@@ -5,7 +5,7 @@ export const socials: Social[] = [
   new Social('bi bi-envelope-fill', 'mailto:a.b.lakhoune@gmail.com'),
   new Social(
     'bi bi-linkedin',
-    'https://www.linkedin.com/in/ben-lakhoune-235712223'
+    'https://www.linkedin.com/in/lakhoune/'
   ),
   new Social('bi bi-twitter', 'https://twitter.com/ben_lakhoune'),
 ];
