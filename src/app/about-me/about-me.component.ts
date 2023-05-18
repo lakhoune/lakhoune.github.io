@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class AboutMeComponent implements OnInit {
   profilePictureLink = 'https://avatars.githubusercontent.com/u/38857665?v=4';
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   ngOnInit(): void {}
 }
