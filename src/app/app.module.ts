@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { HomeComponent } from './home/home.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatSnackBarModule,
     MatCardModule,
     MatSidenavModule,
     MatInputModule,

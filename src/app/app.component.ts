@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,13 @@ export class AppComponent {
     },
   ];
   environment = environment;
+
+  constructor(private _snackBar: MatSnackBar) {}
   onShare() {
     const baseUrl = window.location.href;
     void navigator.clipboard.writeText(baseUrl);
-    alert('Link copied to clipboard');
+    this._snackBar.open('Link copied to clipboard', 'Got it', {
+      duration: 2000,
+    });
   }
 }
