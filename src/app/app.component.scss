@@ -15,8 +15,6 @@ $primary-palette: map.get($color-config, "primary");
 }
 
 
-
-
 .background {
   position: fixed;
   top: 0;
@@ -27,6 +25,10 @@ $primary-palette: map.get($color-config, "primary");
   background-size: cover;
   opacity: 0.4;
   z-index: -1;
+  a{
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 .wrapper {
@@ -35,33 +37,9 @@ $primary-palette: map.get($color-config, "primary");
     background-color: mat.get-color-from-palette($primary-palette, "darker");
     color: mat.get-color-from-palette($primary-palette, "darker-contrast");
   }
-  min-height: 100%;
 }
 
 .socials {
   font-size: xx-large;
 }
 
-footer {
-  font-size: smaller;
-
-  width: 100%;
-
-  background-color: mat.get-color-from-palette($primary-palette, "darker");
-  color: mat.get-color-from-palette($primary-palette, "darker-contrast");
-
-  a {
-    color: mat.get-color-from-palette($primary-palette, "darker-contrast");
-  }
-  .contacts {
-    width: max-content;
-    .contact {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      :last-child {
-        margin-left: 5px;
-      }
-    }
-  }
-}
