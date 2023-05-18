@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { toDataURL } from 'qrcode';
 @Component({
@@ -16,7 +16,7 @@ export class WifiQrComponent implements OnInit {
 
   supportedEncryptions = ['WPA', 'WEP', 'WPA2-EAP'];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
 
   ngOnInit(): void {}
   async generateQR() {
