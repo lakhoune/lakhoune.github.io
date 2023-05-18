@@ -48,5 +48,8 @@ export const projects: Project[] = [
       description:
         'This application can be used to create flashcards and share them with the community',
     },
+    source: {
+      href: 'https://github.com/StudyGrow/Cards',
+    },
   },
 ];
