@@ -12,7 +12,7 @@ $theme: mat.define-light-theme(
   )
 );
 
-@include mat.core-theme($theme);
+@include mat.legacy-core-theme($theme);
 
 html,
 
