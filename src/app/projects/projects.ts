@@ -44,7 +44,7 @@ export const projects: Project[] = [
     subtitle: 'Digital Flashcards',
     previewImgSrc: 'assets/cards-preview.webp',
     page: {
-      href: 'https://studygrow-cards.herokuapp.com/',
+      href: 'https://cards.leier.lu/',
       description:
         'This application can be used to create flashcards and share them with the community',
     },
