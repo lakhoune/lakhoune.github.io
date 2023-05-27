@@ -1,11 +1,13 @@
 .example-header-image {
   background-size: cover;
 }
+
 img.card-img-top {
   width: auto;
   transition: 1s;
   background-size: cover;
 }
+
 img.card-img-top:hover {
   height: 30vh;
 
@@ -26,6 +28,10 @@ img.card-img-top:hover {
   /* width: fit-content;
   width: -moz-fit-content; */
 }
+
 * {
   box-sizing: border-box;
+}
+h2{
+  width: fit-content;
 }

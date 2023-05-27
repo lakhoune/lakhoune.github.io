@@ -1,5 +1,9 @@
-<div class="row projects">
-  <div *ngFor="let project of projects" class="col-12 col-lg-4 mb-2">
+<div class="container justify-content-center my-3">
+  <h2 class="m-auto">Projects</h2>
+</div>
+
+<div class="row projects justify-content-center">
+  <div *ngFor="let project of projects" class="col-12 col-md-4 col-xl-3 col-xxl-2 mb-2">
     <app-project [project]="project"></app-project>
   </div>
 </div>
