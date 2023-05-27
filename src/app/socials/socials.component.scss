@@ -5,7 +5,7 @@
 $color-config: mat.get-color-config($theme);
 $primary-palette: map.get($color-config, "primary");
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 1400px) {
   .content {
     top: 0;
     left: 0;
@@ -16,19 +16,20 @@ $primary-palette: map.get($color-config, "primary");
     height: 200px;
     flex-direction: column !important;
     display: flex !important;
-    border-top-right-radius: .25rem!important;
-    border-bottom-right-radius: .25rem!important;
-    padding: .5rem!important;
+    border-top-right-radius: .25rem !important;
+    border-bottom-right-radius: .25rem !important;
+    padding: .5rem !important;
   }
- 
+
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 1400px) {
   .content {
     a {
-        margin-right: 17px;
+      margin-right: 17px;
     }
-    margin-bottom:.5rem ;
+
+    margin-bottom:.5rem;
     justify-content: space-around;
     display: flex !important;
     border-radius: 5px;
@@ -36,10 +37,11 @@ $primary-palette: map.get($color-config, "primary");
 }
 
 .socials {
-  background-color: mat.get-color-from-palette($primary-palette,"darker");
+  background-color: mat.get-color-from-palette($primary-palette, "darker");
   color: mat.get-color-from-palette($primary-palette, "dark-contrast");
   font-size: xx-large;
 }
+
 a {
   color: mat.get-color-from-palette($primary-palette, "darker-contrast");
 }

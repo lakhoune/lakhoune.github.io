@@ -35,3 +35,19 @@ img.card-img-top:hover {
 h2{
   width: fit-content;
 }
+@media screen and (min-width: 1400px) {
+  .col-12 {
+    position: relative!important;
+    z-index: 1!important;
+    transition: transform 0.3s ease-in-out!important;
+  }
+  
+  .col-12:hover {
+    z-index: 2!important;
+  }
+  
+  .col-12:not(:first-child) {
+    margin-left: -60px!important;
+  }
+}
+  
