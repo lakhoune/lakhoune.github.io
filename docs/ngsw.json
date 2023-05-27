@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1684508388841,
+  "timestamp": 1685184273944,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.7d52534729a5eeea.js",
+        "/main.d5f9acbc0fbf2a7e.js",
         "/manifest.webmanifest",
         "/polyfills.517521c3b778f7d0.js",
         "/runtime.eb5339411b39c9f1.js",
@@ -46,6 +46,7 @@
         "/assets/icons/icon-512x512.png",
         "/assets/icons/icon-72x72.png",
         "/assets/icons/icon-96x96.png",
+        "/assets/images/mock-preview-img-1.jpg",
         "/assets/mobsos-preview.avif",
         "/assets/mobsos-preview.png",
         "/assets/mobsos-preview.webp",
@@ -74,14 +75,15 @@
     "/assets/icons/icon-512x512.png": "06bb1506f3e8dcd127a4b9580251330df1bbc4d3",
     "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/images/mock-preview-img-1.jpg": "60721156d030cdc01e2bf5f0fe6be00128a19061",
     "/assets/mobsos-preview.avif": "1ee421c665e318f5e3fd5cd1edb1ee92dfb91cb0",
     "/assets/mobsos-preview.png": "d1da9cf69b7ecaabe7c5395919ff13170dfc38a6",
     "/assets/mobsos-preview.webp": "9308104d785a053f2b40377d3c82ebf7f7e01e4a",
     "/assets/sbf-preview.png": "8fded91e5c23d302d3aa2c1568c5a13ba0efc6a4",
     "/assets/sbf-preview.webp": "fb56a92cfa4a0aa6eef8bea2c442ba39a6a496d2",
     "/favicon.ico": "813f03c1b2bb34d45e44073b578027bb9b1d42c3",
-    "/index.html": "3dfc3ded6f37ea9f50ab06a940daf130329a2cc4",
-    "/main.7d52534729a5eeea.js": "2edc518410e4fea0eeed7cff33936353d144f3e2",
+    "/index.html": "03668661e51e2636af8c5102c8a7c102ef604540",
+    "/main.d5f9acbc0fbf2a7e.js": "31e7ec73fe5c7c458fd5e0dd202aec7c15114f39",
     "/manifest.webmanifest": "bcb80908ddbf6db6dff72cdee266593ad8bc40f2",
     "/polyfills.517521c3b778f7d0.js": "b872074d2d75a3086cb04400fff89e96847069da",
     "/runtime.eb5339411b39c9f1.js": "9ea50e53797fa3bfab2fb19aaf14d47aa8b69553",
