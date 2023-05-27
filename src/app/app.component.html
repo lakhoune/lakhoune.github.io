@@ -17,6 +17,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
+    <div class="wrapper">
     <div class="background"></div>
     <mat-toolbar class="sticky-top">
       <button mat-icon-button class="example-icon" aria-label="icon-button with menu icon" (click)="drawer.toggle()">
@@ -30,7 +31,7 @@
       </button>
     </mat-toolbar>
 
-    <div class="mt-2">
+    <div class="mt-2 h-100">
       <router-outlet></router-outlet>
     </div>
     <div class="footer">
@@ -38,4 +39,5 @@
       Background designed by
       <a href="http://www.freepik.com">starline / Freepik</a>
     </div>
+  </div>
   </mat-sidenav-content></mat-sidenav-container>
