@@ -12,43 +12,30 @@
           </span>
           <span>
             {{ link.name }}
-          </span></a
-        >
+          </span></a>
       </ng-container>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="background"></div>
-    <div class="wrapper">
-      <mat-toolbar class="sticky-top">
-        <button
-          mat-icon-button
-          class="example-icon"
-          aria-label="icon-button with menu icon"
-          (click)="drawer.toggle()"
-        >
-          <span class="material-icons">menu</span>
-        </button>
-        <a routerLink="/" id="website-header">Lakhoune</a>
-        <span class="example-spacer"></span>
+    <mat-toolbar class="sticky-top">
+      <button mat-icon-button class="example-icon" aria-label="icon-button with menu icon" (click)="drawer.toggle()">
+        <span class="material-icons">menu</span>
+      </button>
+      <a routerLink="/" id="website-header">Lakhoune</a>
+      <span class="example-spacer"></span>
 
-        <button
-          mat-icon-button
-          aria-label="icon-button with share icon"
-          (click)="onShare()"
-        >
-          <i class="bi bi-share-fill fs-4"></i>
-        </button>
-      </mat-toolbar>
+      <button mat-icon-button aria-label="icon-button with share icon" (click)="onShare()">
+        <i class="bi bi-share-fill fs-4"></i>
+      </button>
+    </mat-toolbar>
 
-      <div class="container mt-2">
-        <router-outlet></router-outlet>
-      </div>
-      <div class="footer">
-        Designed by <a href="https://github.com/lakhoune">Ben Lakhoune</a>.
-        Background designed by
-        <a href="http://www.freepik.com">starline / Freepik</a>
-      </div>
+    <div class="mt-2">
+      <router-outlet></router-outlet>
     </div>
-  </mat-sidenav-content></mat-sidenav-container
->
+    <div class="footer">
+      Designed by <a href="https://github.com/lakhoune">Ben Lakhoune</a>.
+      Background designed by
+      <a href="http://www.freepik.com">starline / Freepik</a>
+    </div>
+  </mat-sidenav-content></mat-sidenav-container>
