@@ -24,24 +24,24 @@ $primary-palette: map.get($color-config, "primary");
   background-size: cover;
   opacity: 0.4;
   z-index: -1;
+
   a {
     position: absolute;
     bottom: 0;
   }
 }
 
-.wrapper {
-  mat-toolbar {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.219);
-    background-color: mat.get-color-from-palette($primary-palette, "darker");
-    color: mat.get-color-from-palette($primary-palette, "darker-contrast");
-  }
-  height: 100%;
+
+mat-toolbar {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.219);
+  background-color: mat.get-color-from-palette($primary-palette, "darker");
+  color: mat.get-color-from-palette($primary-palette, "darker-contrast");
 }
 
 .container {
   position: relative;
   min-height: 100%;
+
   .footer {
     position: absolute;
     bottom: 0;
