@@ -1,6 +1,6 @@
-<mat-card class="shadow project h-100 w-100">
+<mat-card class="shadow project h-100 w-100 project">
   <mat-card-header>
-    <mat-card-title>{{ project.title }}</mat-card-title>
+    <mat-card-title class="project-title">{{ project.title }}</mat-card-title>
     <mat-card-subtitle *ngIf="project.subtitle">{{
       project.subtitle
     }}</mat-card-subtitle>
@@ -15,8 +15,7 @@
     <img
       mat-card-image
       [src]="project.previewImgSrc"
-      class="card-img-top"
-      class="thumbnail"
+      class="card-img-top thumbnail"
       alt="website preview"
     />
   </a>

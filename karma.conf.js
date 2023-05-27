@@ -32,6 +32,21 @@ module.exports = function (config) {
         { type: 'text-summary' }
       ]
     },
+    files: [
+      {
+        pattern: 'src/assets/images/mock-preview-img-1.jpg',
+        watched: false,
+        included: false,
+        served: true,
+        type: 'image/jpeg',
+        mime: {
+          'image/jpeg': ['jpg', 'jpeg'],
+        },
+      },
+    ],
+    proxies: {
+      '/assets/images/mock-preview-img-1.jpg': '/base/src/assets/images/mock-preview-img-1.jpg',
+    },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,

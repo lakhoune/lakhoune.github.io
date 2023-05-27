@@ -1,35 +1,56 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatOptionModule } from '@angular/material/core';
+import { MatCard, MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let snackBarSpy: jasmine.SpyObj<MatSnackBar>;
+
   beforeEach(async () => {
+    const snackBarSpyObj = jasmine.createSpyObj('MatSnackBar', ['open']);
+
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule,MatSidenavModule, MatOptionModule,MatCardModule,BrowserAnimationsModule,MatToolbarModule],
+      declarations: [AppComponent],
+      providers: [{ provide: MatSnackBar, useValue: snackBarSpyObj }],
     }).compileComponents();
+
+    snackBarSpy = TestBed.inject(MatSnackBar) as jasmine.SpyObj<MatSnackBar>;
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
   it(`should have as title 'website'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('website');
+    expect(component.title).toEqual('website');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('website app is running!');
+  describe('onShare', () => {
+    it('should copy the current URL to the clipboard', () => {
+      const writeTextSpy = spyOn(navigator.clipboard, 'writeText').and.returnValue(Promise.resolve());
+      component.onShare();
+      expect(writeTextSpy).toHaveBeenCalledWith(window.location.href);
+    });
+
+    it('should show a snackbar message', () => {
+      component.onShare();
+      expect(snackBarSpy.open).toHaveBeenCalledWith('Link copied to clipboard', 'Got it', {
+        duration: 2000,
+      });
+    });
   });
 });
