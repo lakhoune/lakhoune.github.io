@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Run tests
-      run: npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessCI
+      run: npm run test --watch=false --no-progress --browsers=ChromeHeadlessCI
   build:
     runs-on: ubuntu-latest
     needs: test
