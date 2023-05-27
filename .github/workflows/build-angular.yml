@@ -4,9 +4,16 @@ on:
   push:
     branches:
       - master
+      - dev
 jobs:
+    test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run tests
+      run: npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessCI
   build:
     runs-on: ubuntu-latest
+    needs: test
     steps:
     - name: Cancel Previous Runs
       uses: styfle/cancel-workflow-action@0.9.1
