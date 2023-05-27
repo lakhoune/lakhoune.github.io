@@ -52,4 +52,17 @@ export const projects: Project[] = [
       href: 'https://github.com/StudyGrow/Cards',
     },
   },
+  {
+    title: 'Wifi-QR',
+    subtitle: 'Quickly share your Wifi credentials',
+    previewImgSrc: 'assets/wifi-qr.jpg',
+    page: {
+      href: 'https://lakhoune.com/wifi-qr/',
+      description:
+        'This application can be used to generate a QR code containing your Wifi credentials. This way, you can easily share your Wifi with your friends.',
+    },
+    source: {
+      href: 'https://github.com/lakhoune/lakhoune.github.io',
+    },
+  }
 ];
