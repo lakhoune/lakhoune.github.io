@@ -6,9 +6,10 @@ on:
       - master
       - dev
 jobs:
-    test:
+  test:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Run tests
       run: npm run test --watch=false --no-progress --browsers=ChromeHeadlessCI
   build:
