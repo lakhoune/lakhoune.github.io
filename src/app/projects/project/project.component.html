@@ -3,45 +3,18 @@
     <mat-card-title class="project-title">{{ project.title }}</mat-card-title>
     <mat-card-subtitle *ngIf="project.subtitle">{{
       project.subtitle
-    }}</mat-card-subtitle>
+      }}</mat-card-subtitle>
     <mat-card-subtitle *ngIf="!project.subtitle"><br /></mat-card-subtitle>
   </mat-card-header>
-  <a
-    [href]="project.page.href"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="img-link"
-  >
-    <img
-      mat-card-image
-      [src]="project.previewImgSrc"
-      class="card-img-top thumbnail"
-      alt="website preview"
-    />
-  </a>
+  <a [href]="project.page.href" target="_blank" rel="noopener noreferrer" class="img-link">
+    <img mat-card-image [src]="project.previewImgSrc" class="card-img-top thumbnail" alt="website preview" /> </a>
   <mat-card-content>
-    <div
-      *ngIf="project.page.description"
-      [innerHTML]="project.page.description"
-    ></div>
+    <div *ngIf="project.page.description" [innerHTML]="project.page.description"></div>
   </mat-card-content>
   <mat-card-actions>
-    <a
-      class="m-0"
-      [href]="project.page.href"
-      mat-button
-      target="_blank"
-      rel="noopener noreferrer"
-      >Open <i class="bi bi-box-arrow-up-right"></i
-    ></a>
-    <a
-      class="m-0"
-      *ngIf="project.source"
-      [href]="project.source.href"
-      mat-button
-      target="_blank"
-      rel="noopener noreferrer"
-      >View Source <i class="bi bi-box-arrow-up-right"></i
-    ></a>
+    <a class="m-0" [href]="project.page.href" mat-button target="_blank" rel="noopener noreferrer">Open <i
+        class="bi bi-box-arrow-up-right"></i></a>
+    <a class="m-0" *ngIf="project.source" [href]="project.source.href" mat-button target="_blank"
+      rel="noopener noreferrer">View Source <i class="bi bi-box-arrow-up-right"></i></a>
   </mat-card-actions>
 </mat-card>

@@ -1,15 +1,33 @@
-.example-header-image {
-  background-size: cover;
+@use "sass:map";
+@use "@angular/material" as mat;
+@import "src/styles.scss";
+
+$color-config: mat.get-color-config($theme);
+$primary-palette: map.get($color-config, "primary");
+
+.mat-mdc-card-header {
+  z-index: 2;
+  background: white;
 }
 
 .img-link {
   margin-bottom: auto;
-  height:45% !important;
+  height: 50% !important;
+
   img {
-    height: 100% !important;
+    height: auto !important;
+    z-index: 1;
+    width: 100% !important;
     transition: 1s;
     background-size: cover;
     background-position: center;
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  img:hover {
+    transform: scale(1.2) translateY(-50%);
   }
 }
 
@@ -18,11 +36,17 @@
   margin-top: 0 !important;
 }
 
+.mat-mdc-card-content{
+  z-index: 2;
+  background: white;
+}
+
 /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
 mat-card {
   height: 50vh !important;
   display: flex;
   flex-direction: column;
+  z-index: 2;
 }
 
 
@@ -35,9 +59,31 @@ mat-card {
   transition: 0.3s;
   border-radius: 20px;
 }
+
 .project:hover {
   height: fit-content;
   transform: scale(1.05);
   /* width: fit-content;
   width: -moz-fit-content; */
+}
+
+mat-card-actions {
+  background-color: mat.get-color-from-palette($primary-palette);
+}
+
+a {
+  color: rgb(241, 241, 241) !important;
+}
+
+// add blue border to top of card
+mat-card-header {
+  ::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7px;
+    background-color: mat.get-color-from-palette($primary-palette);
+  }
 }
