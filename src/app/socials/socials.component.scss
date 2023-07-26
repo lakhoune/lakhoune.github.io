@@ -36,10 +36,17 @@ $primary-palette: map.get($color-config, "primary");
   }
 }
 
+@media screen and (max-width: 510px) {
+  .socials {
+    margin-bottom: 25px;
+  }
+}
+
 .socials {
   background-color: mat.get-color-from-palette($primary-palette, "darker");
   color: mat.get-color-from-palette($primary-palette, "dark-contrast");
   font-size: xx-large;
+  z-index: 2;
 }
 
 a {
