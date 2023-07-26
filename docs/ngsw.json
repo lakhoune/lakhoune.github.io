@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1690358013604,
+  "timestamp": 1690359813366,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.9900d3d1bbb12c89.js",
+        "/main.3d6cb583ccb6e6a1.js",
         "/manifest.webmanifest",
         "/polyfills.517521c3b778f7d0.js",
         "/runtime.eb5339411b39c9f1.js",
-        "/styles.e92ddc7fd6e26f3f.css"
+        "/styles.e8593024912b02c1.css"
       ],
       "patterns": []
     },
@@ -84,12 +84,12 @@
     "/assets/sbf-preview.webp": "fb56a92cfa4a0aa6eef8bea2c442ba39a6a496d2",
     "/assets/wifi-qr.jpg": "e3bd90249f4a79bb09d29b733a9b81459344484c",
     "/favicon.ico": "813f03c1b2bb34d45e44073b578027bb9b1d42c3",
-    "/index.html": "a164f32740a849bd17146e78d28ba4dac7dbdeed",
-    "/main.9900d3d1bbb12c89.js": "b15f6ade02b49fe7f234cae665c1192d6433a1dc",
+    "/index.html": "7c802c3a05a9e415ea738faeda10430448fd644c",
+    "/main.3d6cb583ccb6e6a1.js": "a3fecb1eeeed506dbc4d9386c4d5fd9ce7b0b6e1",
     "/manifest.webmanifest": "bcb80908ddbf6db6dff72cdee266593ad8bc40f2",
     "/polyfills.517521c3b778f7d0.js": "b872074d2d75a3086cb04400fff89e96847069da",
     "/runtime.eb5339411b39c9f1.js": "9ea50e53797fa3bfab2fb19aaf14d47aa8b69553",
-    "/styles.e92ddc7fd6e26f3f.css": "5c0d9858677de41bb0b466821053ed560bc721a5"
+    "/styles.e8593024912b02c1.css": "ee58fe087e0459404f9920ca3487b3068fdc0168"
   },
   "navigationUrls": [
     {
