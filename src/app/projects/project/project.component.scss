@@ -43,7 +43,6 @@ $primary-palette: map.get($color-config, "primary");
 
 /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
 mat-card {
-  height: 50vh !important;
   display: flex;
   flex-direction: column;
   z-index: 2;
