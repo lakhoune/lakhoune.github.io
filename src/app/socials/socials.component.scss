@@ -13,7 +13,7 @@ $primary-palette: map.get($color-config, "primary");
     position: fixed;
     margin-top: auto;
     margin-bottom: auto;
-    height: 200px;
+    height: fit-content;
     flex-direction: column !important;
     display: flex !important;
     border-top-right-radius: .25rem !important;

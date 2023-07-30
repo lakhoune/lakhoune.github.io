@@ -8,6 +8,7 @@
     <img
       *ngIf="getType(social.logo) === 'object'; else inline"
       [src]="getSource(social.logo)"
+      style="width: 35px"
       alt=""
     />
     <ng-template #inline>
