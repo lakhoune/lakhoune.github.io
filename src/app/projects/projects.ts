@@ -53,6 +53,19 @@ export const projects: Project[] = [
     },
   },
   {
+    title: 'This website',
+    subtitle: 'My personal website, which you are currently visiting',
+    previewImgSrc: 'assets/website-preview.png',
+    page: {
+      href: 'https://lakhoune.com/',
+      description:
+        'This website is built with Angular and hosted on GitHub Pages. It is a single page application (SPA) and uses the Angular Material UI library. The source code is available on GitHub, along with a CI/CD pipeline. Feel free to use this website as a template for your own website, but please give credit where credit is due :) ',
+    },
+    source: {
+      href: 'https://github.com/lakhoune/lakhoune.github.io',
+    },
+  },
+  {
     title: 'Wifi-QR',
     subtitle: 'Quickly share your Wifi credentials',
     previewImgSrc: 'assets/wifi-qr.jpg',
@@ -64,5 +77,5 @@ export const projects: Project[] = [
     source: {
       href: 'https://github.com/lakhoune/lakhoune.github.io',
     },
-  }
+  },
 ];
