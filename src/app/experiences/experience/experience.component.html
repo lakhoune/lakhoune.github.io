@@ -1,0 +1,10 @@
+{{ e.title }} on <strong>{{ e.date | date }}</strong>
+<ng-container *ngIf="e.description">
+  <i class="ms-2 bi bi-info-circle" [matMenuTriggerFor]="menu"></i>
+
+  <mat-menu #menu="matMenu">
+    <div class="p-3">
+      {{ e.description }}
+    </div>
+  </mat-menu>
+</ng-container>

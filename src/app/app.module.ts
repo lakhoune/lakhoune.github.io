@@ -10,13 +10,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import { ProjectComponent } from './projects/project/project.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { SocialsComponent } from './socials/socials.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { ExperienceComponent } from './experience/experience.component';
+import { ExperiencesComponent } from './experiences/experiences.component';
 import { WifiQrComponent } from './wifi-qr/wifi-qr.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './home/home.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ExperienceComponent } from './experiences/experience/experience.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +33,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ProjectComponent,
     AboutMeComponent,
     SocialsComponent,
+    ExperiencesComponent,
     ExperienceComponent,
     WifiQrComponent,
     HomeComponent,
@@ -50,6 +53,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatTooltipModule,
+    MatMenuModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

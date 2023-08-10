@@ -35,7 +35,7 @@
       <h2>{{ experience.year }}</h2>
       <ul *ngIf="experience.experiences">
         <li *ngFor="let e of experience.experiences">
-          {{ e.title }} on <strong>{{ e.date | date }}</strong>
+          <app-experience [e]="e"></app-experience>
         </li>
       </ul>
     </div>
