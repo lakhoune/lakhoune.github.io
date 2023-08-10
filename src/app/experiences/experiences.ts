@@ -11,7 +11,7 @@ export const experiences: ExperienceYear[] = [
         date: new Date('2023-09-01'),
         title: 'Working student at Capgemini Invent',
         description:
-          'Team Enterprise Transformation - Enterprise Data & Analytics with focus on Process Mining',
+          'From September 2023 until December 2023. Team Enterprise Transformation - Enterprise Data & Analytics with focus on Process Mining',
       },
     ],
   },
