@@ -18,7 +18,8 @@ export class WifiQrComponent implements OnInit {
 
   constructor(private fb: UntypedFormBuilder) {}
 
-  ngOnInit(): void {}
+  showInstallButton = false;
+
   async generateQR() {
     const pattern = `WIFI:T:${this.form.value.encryption};S:${this.form.value.ssid};P:${this.form.value.password};`;
     const code = await toDataURL(pattern);
@@ -28,4 +29,37 @@ export class WifiQrComponent implements OnInit {
     link.download = 'wifi-qr.png';
     link.click();
   }
+
+  ngOnInit() {
+    window.addEventListener('beforeinstallprompt', (event: any) => {
+      console.log('ee');
+      // Prevent the default browser install prompt
+      event.preventDefault();
+
+      // Show the custom install button
+      this.showInstallButton = true;
+
+      // Store the event for later use
+      const installPromptEvent = event;
+
+      // Handle the user's interaction with your custom button
+      this.installApp = () => {
+        // Show the browser's install prompt
+        installPromptEvent.prompt();
+
+        // Wait for the user to respond to the prompt
+        installPromptEvent.userChoice.then((choiceResult: any) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('App installed');
+          } else {
+            console.log('App not installed');
+          }
+        });
+
+        // Hide the custom install button
+        this.showInstallButton = false;
+      };
+    });
+  }
+  installApp: () => void = () => {};
 }

@@ -11,7 +11,12 @@
       <br />
       <mat-form-field>
         <mat-label>Wifi password</mat-label>
-        <input matInput placeholder="password" type="password" formControlName="password" />
+        <input
+          matInput
+          placeholder="password"
+          type="password"
+          formControlName="password"
+        />
         <mat-hint>Your password is never sent to a server</mat-hint>
       </mat-form-field>
       <br />
@@ -20,16 +25,28 @@
         <mat-select formControlName="encryption">
           <mat-option *ngFor="let e of supportedEncryptions" [value]="e">{{
             e
-            }}</mat-option>
+          }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-flat-button color="primary" type="submit" [disabled]="!form.valid">
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        [disabled]="!form.valid"
+      >
         {{
-        form.valid
-        ? "Generate QR code"
-        : "Please enter your wifi name and password"
+          form.valid
+            ? "Generate QR code"
+            : "Please enter your wifi name and password"
         }}
       </button>
     </form>
+  </mat-card>
+
+  <mat-card *ngIf="showInstallButton">
+    Add this page to your home screen to use it offline:
+    <button mat-icon-button (click)="installApp()">
+      <i class="bi bi-download"></i>
+    </button>
   </mat-card>
 </div>
