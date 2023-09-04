@@ -5,7 +5,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test-mac": "export CHROME_BIN=/Applications/Chromium.app/Contents/MacOS/Chromium && ng test"
   },
   "private": true,
   "dependencies": {
