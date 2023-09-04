@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SocialsComponent } from './socials.component';
 import { socials } from './socials';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SocialsComponent', () => {
   let component: SocialsComponent;
@@ -10,7 +10,7 @@ describe('SocialsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SocialsComponent],
-      imports: [HttpClient],
+      imports: [HttpClientTestingModule],
     }).compileComponents();
   });
 

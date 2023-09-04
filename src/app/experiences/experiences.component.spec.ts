@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ExperiencesComponent } from './experiences.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ExperienceComponent', () => {
   let component: ExperiencesComponent;
@@ -8,6 +9,7 @@ describe('ExperienceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [ExperiencesComponent],
     }).compileComponents();
   });
