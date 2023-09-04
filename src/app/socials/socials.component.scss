@@ -52,3 +52,6 @@ $primary-palette: map.get($color-config, "primary");
 a {
   color: mat.get-color-from-palette($primary-palette, "darker-contrast");
 }
+.bi-file-earmark-text{
+  color: mat.get-color-from-palette($primary-palette, "darker-contrast");
+}

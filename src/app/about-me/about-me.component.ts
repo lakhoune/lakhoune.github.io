@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class AboutMeComponent implements OnInit {
   profilePictureLink = 'https://avatars.githubusercontent.com/u/38857665?v=4';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {}
 }
