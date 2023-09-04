@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SocialsComponent } from './socials.component';
 import { socials } from './socials';
+import { HttpClient } from '@angular/common/http';
 
 describe('SocialsComponent', () => {
   let component: SocialsComponent;
@@ -9,6 +10,7 @@ describe('SocialsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SocialsComponent],
+      imports: [HttpClient],
     }).compileComponents();
   });
 
@@ -21,7 +23,7 @@ describe('SocialsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
