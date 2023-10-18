@@ -3,6 +3,18 @@ export const experiences: ExperienceYear[] = [
     year: 2023,
     experiences: [
       {
+        title: 'Organizer of Data-driven Sustainability Workshop',
+        date: new Date('2023-10-13'),
+        description:
+          'Organized a workshop on the topic of data-driven sustainability at the ESCP Berlin Business School',
+      },
+      {
+        title: 'Celonis Value Realization Expert Certification',
+        date: new Date('2023-09-08'),
+        description:
+          'Successful completion of Celonis Value Realization Expert Partner Certification',
+      },
+      {
         title: 'Celonis Consultant Star Certification',
         date: new Date('2023-08-04'),
         description: 'Successful completion of Celonis Consultant Bootcamp',
