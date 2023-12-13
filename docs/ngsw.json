@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1697638597319,
+  "timestamp": 1702485689787,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.1c814da08579ca73.js",
+        "/main.3b0682825b856c48.js",
         "/manifest.webmanifest",
         "/polyfills.517521c3b778f7d0.js",
         "/runtime.eb5339411b39c9f1.js",
@@ -35,6 +35,7 @@
         "/assets/cards-preview.avif",
         "/assets/cards-preview.png",
         "/assets/cards-preview.webp",
+        "/assets/cv-de.pdf",
         "/assets/cv.pdf",
         "/assets/icons/apple-touch-icon.png",
         "/assets/icons/favicon-16x16.png",
@@ -67,7 +68,8 @@
     "/assets/cards-preview.avif": "955b73d1f653262c2cc83671944e1ca3065df5d5",
     "/assets/cards-preview.png": "4deb509c72b6e1afa96ae4518991bd46cbeb2023",
     "/assets/cards-preview.webp": "8d16025d3153a94c406e819e073924d7aa33c954",
-    "/assets/cv.pdf": "cb4bae3437659ff010a5e5942ea66d698dd41c47",
+    "/assets/cv-de.pdf": "15abd12a32ee44bb72a0b7e87e34938eca199253",
+    "/assets/cv.pdf": "7db555e425479e1d9cbd35ca4eb1db3b1abb29dc",
     "/assets/icons/apple-touch-icon.png": "a9523ab5642d23a8eb0d62592f0a9840eb35de06",
     "/assets/icons/favicon-16x16.png": "c6bd5b025cbb7707b8905d18540bc98f7d3695f9",
     "/assets/icons/favicon-32x32.png": "da54685aa9dc8a7321729eb18c58700a0c1187c4",
@@ -88,8 +90,8 @@
     "/assets/website-preview.png": "eff5c7e649b2f80094a592ace6c813e9e8b65dd1",
     "/assets/wifi-qr.jpg": "e3bd90249f4a79bb09d29b733a9b81459344484c",
     "/favicon.ico": "813f03c1b2bb34d45e44073b578027bb9b1d42c3",
-    "/index.html": "83427b93655640e16a7298ff8bd98b6969f2695b",
-    "/main.1c814da08579ca73.js": "1fc619cad9a80141c42ba7abcf2a99f0bcfa6546",
+    "/index.html": "a8885260573e8be9e79ba2e825b3871611330746",
+    "/main.3b0682825b856c48.js": "fd89c37d3fc50ba9aa4a91da57321ff2aba6dafa",
     "/manifest.webmanifest": "bcb80908ddbf6db6dff72cdee266593ad8bc40f2",
     "/polyfills.517521c3b778f7d0.js": "b872074d2d75a3086cb04400fff89e96847069da",
     "/runtime.eb5339411b39c9f1.js": "9ea50e53797fa3bfab2fb19aaf14d47aa8b69553",
