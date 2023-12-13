@@ -21,9 +21,9 @@ export class SocialsComponent implements OnInit {
   }
   ngOnInit(): void {}
 
-  openCV(): void {
+  openCV(fileName: string): void {
     this.http
-      .get('/assets/cv.pdf', { responseType: 'blob' })
+      .get('/assets/' + fileName, { responseType: 'blob' })
       .subscribe((blob: Blob) => {
         const url = URL.createObjectURL(blob);
         window.open(url, '_blank');
