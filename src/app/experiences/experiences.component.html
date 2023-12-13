@@ -32,12 +32,22 @@
     </p>
     <button
       #cvButton
-      (click)="openCV()"
+      (click)="openCV('cv.pdf')"
+      mat-flat-button
+      color="primary"
+      aria-label="icon for cv"
+      class="me-2"
+    >
+      Open CV<i class="ms-1 bi bi-file-earmark-text"></i>
+    </button>
+    <button
+      #cvButtonDe
+      (click)="openCV('cv-de.pdf')"
       mat-flat-button
       color="primary"
       aria-label="icon for cv"
     >
-      Open CV<i class="ms-1 bi bi-file-earmark-text"></i>
+      Lebenslauf öffnen<i class="ms-1 bi bi-file-earmark-text"></i>
     </button>
   </mat-card-content>
 </mat-card>

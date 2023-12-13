@@ -12,23 +12,28 @@ export class ExperiencesComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   @ViewChild('cvButton') cvButton?: MatButton;
+  @ViewChild('cvButtonDe') cvButtonDe?: MatButton;
 
   ngOnInit(): void {
-    // check if current route has ?openCV=true
     const urlParams = new URLSearchParams(window.location.search);
     const open = urlParams.get('openCV');
+    const lang = urlParams.get('lang');
     if (open) {
       setTimeout(() => {
-        this.cvButton?._elementRef.nativeElement.click();
+        if (lang === 'de') {
+          this.cvButtonDe?._elementRef.nativeElement.click();
+        } else {
+          this.cvButton?._elementRef.nativeElement.click();
+        }
         // remove ?cv=true from url
         window.history.replaceState({}, '', window.location.pathname);
       }, 20);
     }
   }
 
-  openCV(): void {
+  openCV(fileName: string): void {
     this.http
-      .get('/assets/cv.pdf', { responseType: 'blob' })
+      .get('/assets/' + fileName, { responseType: 'blob' })
       .subscribe((blob: Blob) => {
         const url = URL.createObjectURL(blob);
         window.open(url, '_blank');
