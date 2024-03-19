@@ -7,37 +7,48 @@
 
       <ng-container *ngFor="let link of links">
         <a mat-list-item routerLink="{{ link.url }}">
-          <span class="material-icons">
+          <span *ngIf="link.icon" class="material-icons">
             {{ link.icon }}
           </span>
           <span>
             {{ link.name }}
-          </span></a>
+          </span></a
+        >
       </ng-container>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="wrapper">
-    <div class="background"></div>
-    <mat-toolbar class="sticky-top">
-      <button mat-icon-button class="example-icon" aria-label="icon-button with menu icon" (click)="drawer.toggle()">
-        <span class="material-icons">menu</span>
-      </button>
-      <a routerLink="/" id="website-header">Lakhoune</a>
-      <span class="example-spacer"></span>
+      <div class="background"></div>
+      <mat-toolbar class="sticky-top">
+        <button
+          mat-icon-button
+          class="example-icon"
+          aria-label="icon-button with menu icon"
+          (click)="drawer.toggle()"
+        >
+          <span class="material-icons">menu</span>
+        </button>
+        <a routerLink="/" id="website-header">Lakhoune</a>
+        <span class="example-spacer"></span>
 
-      <button mat-icon-button aria-label="icon-button with share icon" (click)="onShare()">
-        <i class="bi bi-share-fill fs-4"></i>
-      </button>
-    </mat-toolbar>
+        <button
+          mat-icon-button
+          aria-label="icon-button with share icon"
+          (click)="onShare()"
+        >
+          <i class="bi bi-share-fill fs-4"></i>
+        </button>
+      </mat-toolbar>
 
-    <div class="mt-2 h-100">
-      <router-outlet></router-outlet>
+      <div class="mt-2 h-100">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="footer">
+        Designed by <a href="https://github.com/lakhoune">Ben Lakhoune</a>.
+        Background designed by
+        <a href="http://www.freepik.com">starline / Freepik</a>
+      </div>
     </div>
-    <div class="footer">
-      Designed by <a href="https://github.com/lakhoune">Ben Lakhoune</a>.
-      Background designed by
-      <a href="http://www.freepik.com">starline / Freepik</a>
-    </div>
-  </div>
-  </mat-sidenav-content></mat-sidenav-container>
+  </mat-sidenav-content></mat-sidenav-container
+>
