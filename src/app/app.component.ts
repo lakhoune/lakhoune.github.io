@@ -25,6 +25,10 @@ export class AppComponent {
   constructor(private _snackBar: MatSnackBar) {}
   onShare() {
     const baseUrl = window.location.href;
+    // make sure the document is focused
+    // before we try to copy the URL
+    document.body.focus();
+
     void navigator.clipboard.writeText(baseUrl);
     this._snackBar.open('Link copied to clipboard', 'Got it', {
       duration: 2000,
