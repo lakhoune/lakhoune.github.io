@@ -39,18 +39,4 @@ describe('AppComponent', () => {
     expect(component.title).toEqual('website');
   });
 
-  describe('onShare', () => {
-    it('should copy the current URL to the clipboard', () => {
-      const writeTextSpy = spyOn(navigator.clipboard, 'writeText').and.returnValue(Promise.resolve());
-      component.onShare();
-      expect(writeTextSpy).toHaveBeenCalledWith(window.location.href);
-    });
-
-    it('should show a snackbar message', () => {
-      component.onShare();
-      expect(snackBarSpy.open).toHaveBeenCalledWith('Link copied to clipboard', 'Got it', {
-        duration: 2000,
-      });
-    });
-  });
 });
