@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1703075043999,
+  "timestamp": 1710848068439,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.c210932480188781.js",
+        "/main.eee7238f88eb5931.js",
         "/manifest.webmanifest",
         "/polyfills.517521c3b778f7d0.js",
         "/runtime.eb5339411b39c9f1.js",
@@ -92,8 +92,8 @@
     "/assets/website-preview.png": "eff5c7e649b2f80094a592ace6c813e9e8b65dd1",
     "/assets/wifi-qr.jpg": "e3bd90249f4a79bb09d29b733a9b81459344484c",
     "/favicon.ico": "813f03c1b2bb34d45e44073b578027bb9b1d42c3",
-    "/index.html": "c4a0fc1d50bc7ff9763e76dcf0724731168a40fb",
-    "/main.c210932480188781.js": "241f33bec627ca923b319da5b83f4c6453779e6a",
+    "/index.html": "e1ea55447f0b890720f831c471d5bfbbc37d587e",
+    "/main.eee7238f88eb5931.js": "712616a451a4bd8a38ea82213c4149b0d82a308d",
     "/manifest.webmanifest": "bcb80908ddbf6db6dff72cdee266593ad8bc40f2",
     "/polyfills.517521c3b778f7d0.js": "b872074d2d75a3086cb04400fff89e96847069da",
     "/runtime.eb5339411b39c9f1.js": "9ea50e53797fa3bfab2fb19aaf14d47aa8b69553",
