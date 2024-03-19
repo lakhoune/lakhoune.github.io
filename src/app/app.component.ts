@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AppComponent {
   title = 'website';
-  links: { url: string; icon: string; name: string }[] = [
+  links: { url: string; icon?: string; name: string }[] = [
     {
       url: '/wifi-qr',
       icon: 'qr_code_2',
@@ -17,7 +17,6 @@ export class AppComponent {
     },
     {
       url: '/blog/tokyo',
-      icon: 'tokyo',
       name: 'Tokyo Blog',
     },
   ];
