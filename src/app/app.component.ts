@@ -15,6 +15,11 @@ export class AppComponent {
       icon: 'qr_code_2',
       name: 'Wifi QR Generator',
     },
+    {
+      url: '/blog/tokyo',
+      icon: 'tokyo',
+      name: 'Tokyo Blog',
+    },
   ];
   environment = environment;
 

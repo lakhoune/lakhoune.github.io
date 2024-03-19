@@ -26,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './home/home.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ExperienceComponent } from './experiences/experience/experience.component';
+import { TokyoComponent } from './blog/tokyo/tokyo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { ExperienceComponent } from './experiences/experience/experience.compone
     ExperienceComponent,
     WifiQrComponent,
     HomeComponent,
+    TokyoComponent,
   ],
   imports: [
     BrowserModule,
