@@ -28,10 +28,14 @@ export class AppComponent {
     // make sure the document is focused
     // before we try to copy the URL
     document.body.focus();
+    try {
+      void navigator.clipboard.writeText(baseUrl);
+      this._snackBar.open('Link copied to clipboard', 'Got it', {
+        duration: 2000,
+      });
+    } catch (error) {
+      console.error(error);
+    }
 
-    void navigator.clipboard.writeText(baseUrl);
-    this._snackBar.open('Link copied to clipboard', 'Got it', {
-      duration: 2000,
-    });
   }
 }
