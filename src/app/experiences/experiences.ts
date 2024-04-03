@@ -1,5 +1,21 @@
 export const experiences: ExperienceYear[] = [
   {
+    year: 2024,
+    experiences: [
+      {
+        title: 'Master Thesis',
+        date: new Date('2024-03-08'),
+        description: 'Master Thesis at the Information Systems & Databases at RWTH Aachen University',
+      },
+      {
+        title: 'Consultant at Capgemini Invent',
+        date: new Date('2024-04-01'),
+        description:
+          'From April 2024 until present. Team Enterprise Transformation - Enterprise Data & Analytics with focus on Process Mining',
+      },
+    ],
+  },
+  {
     year: 2023,
     experiences: [
       {
