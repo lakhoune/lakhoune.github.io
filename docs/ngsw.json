@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1712168422135,
+  "timestamp": 1712169051958,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -69,8 +69,8 @@
     "/assets/cards-preview.avif": "955b73d1f653262c2cc83671944e1ca3065df5d5",
     "/assets/cards-preview.png": "4deb509c72b6e1afa96ae4518991bd46cbeb2023",
     "/assets/cards-preview.webp": "8d16025d3153a94c406e819e073924d7aa33c954",
-    "/assets/cv-de.pdf": "15abd12a32ee44bb72a0b7e87e34938eca199253",
-    "/assets/cv.pdf": "63cf7704eab09c3d4eb48c7f2eea6dab9f90648a",
+    "/assets/cv-de.pdf": "ffd3936cd99bc272020cde1276d0147ac15849a8",
+    "/assets/cv.pdf": "2dc7145a8e1f4aaaa6e84a5ada3dba798521125a",
     "/assets/icons/apple-touch-icon.png": "a9523ab5642d23a8eb0d62592f0a9840eb35de06",
     "/assets/icons/favicon-16x16.png": "c6bd5b025cbb7707b8905d18540bc98f7d3695f9",
     "/assets/icons/favicon-32x32.png": "da54685aa9dc8a7321729eb18c58700a0c1187c4",
