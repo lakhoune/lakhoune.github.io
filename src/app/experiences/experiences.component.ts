@@ -3,9 +3,10 @@ import { experiences } from './experiences';
 import { HttpClient } from '@angular/common/http';
 import { MatButton } from '@angular/material/button';
 @Component({
-  selector: 'app-experiences',
-  templateUrl: './experiences.component.html',
-  styleUrls: ['./experiences.component.scss'],
+    selector: 'app-experiences',
+    templateUrl: './experiences.component.html',
+    styleUrls: ['./experiences.component.scss'],
+    standalone: false
 })
 export class ExperiencesComponent implements OnInit {
   experiences = experiences

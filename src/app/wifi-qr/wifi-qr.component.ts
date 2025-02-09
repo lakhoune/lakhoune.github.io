@@ -3,9 +3,10 @@ import { UntypedFormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { toDataURL } from 'qrcode';
 @Component({
-  selector: 'app-wifi-qr',
-  templateUrl: './wifi-qr.component.html',
-  styleUrls: ['./wifi-qr.component.scss'],
+    selector: 'app-wifi-qr',
+    templateUrl: './wifi-qr.component.html',
+    styleUrls: ['./wifi-qr.component.scss'],
+    standalone: false
 })
 export class WifiQrComponent implements OnInit {
   form = this.fb.group({
