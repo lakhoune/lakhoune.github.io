@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1727858035230,
+  "timestamp": 1739111367513,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.0f5d01f32d9751e0.js",
+        "/main.a9c1e64b5b6b6196.js",
         "/manifest.webmanifest",
         "/polyfills.517521c3b778f7d0.js",
         "/runtime.eb5339411b39c9f1.js",
@@ -31,12 +31,12 @@
       "urls": [
         "/assets/19366.jpg",
         "/assets/19366.webp",
+        "/assets/Ben Lakhoune Lebenslauf.pdf",
+        "/assets/CV Ben Lakhoune.pdf",
         "/assets/acc.png",
         "/assets/cards-preview.avif",
         "/assets/cards-preview.png",
         "/assets/cards-preview.webp",
-        "/assets/cv-ben-lakhoune-de.pdf",
-        "/assets/cv-ben-lakhoune.pdf",
         "/assets/icons/apple-touch-icon.png",
         "/assets/icons/favicon-16x16.png",
         "/assets/icons/favicon-32x32.png",
@@ -65,12 +65,12 @@
   "hashTable": {
     "/assets/19366.jpg": "77a5f425820c054142034e0c17ee89cee9c1991e",
     "/assets/19366.webp": "05336727aa53e93d64933bdb418f44e2ae94ff43",
+    "/assets/Ben Lakhoune Lebenslauf.pdf": "33187d1fdc1d70817fdff3f26928309284b77344",
+    "/assets/CV Ben Lakhoune.pdf": "793de1119677c6aa348928a90088b4ff7a9ea2f5",
     "/assets/acc.png": "5c34c0e1923f03bbad42e246d427e0ae16590181",
     "/assets/cards-preview.avif": "955b73d1f653262c2cc83671944e1ca3065df5d5",
     "/assets/cards-preview.png": "4deb509c72b6e1afa96ae4518991bd46cbeb2023",
     "/assets/cards-preview.webp": "8d16025d3153a94c406e819e073924d7aa33c954",
-    "/assets/cv-ben-lakhoune-de.pdf": "58d05b71e4f34502e7b51f9ab4ad534c8a0214d0",
-    "/assets/cv-ben-lakhoune.pdf": "69dc98980fe8b5bb3f798e8c99c14031cf7d2d43",
     "/assets/icons/apple-touch-icon.png": "a9523ab5642d23a8eb0d62592f0a9840eb35de06",
     "/assets/icons/favicon-16x16.png": "c6bd5b025cbb7707b8905d18540bc98f7d3695f9",
     "/assets/icons/favicon-32x32.png": "da54685aa9dc8a7321729eb18c58700a0c1187c4",
@@ -92,8 +92,8 @@
     "/assets/website-preview.png": "eff5c7e649b2f80094a592ace6c813e9e8b65dd1",
     "/assets/wifi-qr.jpg": "e3bd90249f4a79bb09d29b733a9b81459344484c",
     "/favicon.ico": "813f03c1b2bb34d45e44073b578027bb9b1d42c3",
-    "/index.html": "9b71e2cabad46417e546bc928dcd75de58db8b0e",
-    "/main.0f5d01f32d9751e0.js": "e28614428212208064e5ea0a701bb7348ba12279",
+    "/index.html": "81afab06c2c01e108c1bbcc301dc858632f97638",
+    "/main.a9c1e64b5b6b6196.js": "6e945d3ac277aeaa30a320eed002953a469a8a44",
     "/manifest.webmanifest": "bcb80908ddbf6db6dff72cdee266593ad8bc40f2",
     "/polyfills.517521c3b778f7d0.js": "b872074d2d75a3086cb04400fff89e96847069da",
     "/runtime.eb5339411b39c9f1.js": "9ea50e53797fa3bfab2fb19aaf14d47aa8b69553",
