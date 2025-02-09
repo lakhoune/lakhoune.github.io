@@ -1,5 +1,16 @@
 export const experiences: ExperienceYear[] = [
   {
+    year: 2025,
+    experiences: [
+      {
+        title: 'Consultant at SAP',
+        date: new Date('2025-02-01'),
+        description:
+          'From February 2025 until present. Team Process Intelligence Services',
+      },
+    ],
+  },
+  {
     year: 2024,
     experiences: [
       {
@@ -11,7 +22,7 @@ export const experiences: ExperienceYear[] = [
         title: 'Consultant at Capgemini Invent',
         date: new Date('2024-04-01'),
         description:
-          'From April 2024 until present. Team Enterprise Transformation - Enterprise Data & Analytics with focus on Process Mining',
+          'From April 2024 until October 2024. Team Enterprise Transformation - Enterprise Data & Analytics with focus on Process Mining',
       },
     ],
   },
