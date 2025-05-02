@@ -12,8 +12,6 @@ $theme: mat.m2-define-light-theme(
   )
 );
 
-@include mat.legacy-core-theme($theme);
-
 html,
 
 body {
