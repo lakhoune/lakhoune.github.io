@@ -6,17 +6,17 @@
 
 :host { display: block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: transparent; color: #2c3e50; min-height: 100vh; }
 
-$color-config: mat.get-color-config($theme);
+$color-config: mat.m2-get-color-config($theme);
 $primary-palette: map.get($color-config, 'primary');
 $accent-palette: map.get($color-config, 'accent');
 
-$primary: mat.get-color-from-palette($primary-palette);
-$primary-contrast: mat.get-contrast-color-from-palette($primary-palette, 'default');
-$primary-lighter: mat.get-color-from-palette($primary-palette, 'lighter');
+$primary: mat.m2-get-color-from-palette($primary-palette);
+$primary-contrast: mat.m2-get-contrast-color-from-palette($primary-palette, 'default');
+$primary-lighter: mat.m2-get-color-from-palette($primary-palette, 'lighter');
 
-$accent: mat.get-color-from-palette($accent-palette);
-$accent-contrast: mat.get-contrast-color-from-palette($accent-palette, 'default');
-$accent-lighter: mat.get-color-from-palette($accent-palette, 'lighter');
+$accent: mat.m2-get-color-from-palette($accent-palette);
+$accent-contrast: mat.m2-get-contrast-color-from-palette($accent-palette, 'default');
+$accent-lighter: mat.m2-get-color-from-palette($accent-palette, 'lighter');
 
 /* ── Setup ── */
 #setup-panel { max-width: 740px; margin: 2rem auto; padding: 0 1rem; }
