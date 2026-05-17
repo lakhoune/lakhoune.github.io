@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install
-      run: npm ci
+      run: npm i
     - name: Run tests
       run: npx ng test --watch=false --no-progress
   build:
