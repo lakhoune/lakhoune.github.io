@@ -9,3 +9,43 @@
 html, body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 section { margin-bottom: 2rem; }
 
+@media print {
+
+  html,
+  body,
+  app-root,
+  app-your-component,
+  :host {
+    display: block !important;
+    position: static !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+  }
+
+  * {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  .months-grid,
+  .month-card,
+  .plan-wrap {
+    display: block !important;
+    position: static !important;
+    float: none !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  .month-card {
+    page-break-after: always;
+  }
+
+  .month-card:last-child {
+    page-break-after: auto;
+  }
+}

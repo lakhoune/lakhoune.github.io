@@ -122,7 +122,14 @@ button:active { transform: scale(0.97); }
   .sp-card, .sp-mid { padding: 1.2rem 1.5rem; }
   .sp-pts { font-size: 2.4rem; }
   .months-grid { display: block; }
-  .month-card { display: block; overflow: visible !important; break-after: page; page-break-after: always; break-inside: avoid; -webkit-column-break-inside: avoid; page-break-inside: avoid; border: none; border-radius: 0; }
+  .month-card {
+  display: block;
+  overflow: visible !important;
+  break-after: page;
+  page-break-after: always;
+  border: none;
+  border-radius: 0;
+}
   .month-card * { overflow: visible !important; }
   .month-card, .month-card * { -webkit-print-color-adjust: exact; }
   .month-card:last-child { break-after: auto; page-break-after: auto; }
