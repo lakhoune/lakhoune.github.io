@@ -24,6 +24,10 @@ const routes: Routes = [
     component: WifiQrComponent,
   },
   {
+    path: 'wg-planner',
+    loadComponent: () => import('./wg-planner/wg-planner.component').then(m => m.WgPlannerComponent),
+  },
+  {
     path: 'cv',
     redirectTo: 'dummy',
     pathMatch: 'full',

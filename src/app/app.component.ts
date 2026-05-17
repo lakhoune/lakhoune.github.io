@@ -16,6 +16,11 @@ export class AppComponent {
       name: 'Wifi QR Generator',
     },
     {
+      url: '/wg-planner',
+      icon: 'calendar_month',
+      name: 'Chore Planner',
+    },
+    {
       url: '/blog/tokyo',
       name: 'Tokyo Blog',
     },
