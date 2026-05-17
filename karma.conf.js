@@ -2,6 +2,14 @@
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
 module.exports = function (config) {
+  // Prefer Puppeteer's Chromium when available (works in CI and restricted macOS)
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    process.env.CHROME_BIN = require('puppeteer').executablePath();
+  } catch (e) {
+    // ignore if puppeteer isn't installed — fallback to system Chrome
+  }
+
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
@@ -52,7 +60,13 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadlessNoSandbox'],
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+      }
+    },
     singleRun: false,
     restartOnFileChange: true
   });

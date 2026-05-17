@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1746210379888,
+  "timestamp": 1779029291490,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -11,13 +11,14 @@
         "ignoreVary": true
       },
       "urls": [
+        "/157.44febc1156d56f50.js",
         "/favicon.ico",
         "/index.html",
-        "/main.e1d4508966f1059a.js",
+        "/main.2ce071341f0fc1dd.js",
         "/manifest.webmanifest",
-        "/polyfills.517521c3b778f7d0.js",
-        "/runtime.eb5339411b39c9f1.js",
-        "/styles.e8593024912b02c1.css"
+        "/polyfills.b0a7df245a7612d8.js",
+        "/runtime.e88628661e077246.js",
+        "/styles.48f7dd4add47b147.css"
       ],
       "patterns": []
     },
@@ -63,6 +64,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/157.44febc1156d56f50.js": "4eac60ac4860cfb56b0a1d388f0c4fccf072c0e3",
     "/assets/19366.jpg": "77a5f425820c054142034e0c17ee89cee9c1991e",
     "/assets/19366.webp": "05336727aa53e93d64933bdb418f44e2ae94ff43",
     "/assets/Ben Lakhoune Lebenslauf.pdf": "33187d1fdc1d70817fdff3f26928309284b77344",
@@ -92,12 +94,12 @@
     "/assets/website-preview.png": "eff5c7e649b2f80094a592ace6c813e9e8b65dd1",
     "/assets/wifi-qr.jpg": "e3bd90249f4a79bb09d29b733a9b81459344484c",
     "/favicon.ico": "813f03c1b2bb34d45e44073b578027bb9b1d42c3",
-    "/index.html": "36f6d22eb3e31fa38fc24da6743bb6269a830c4e",
-    "/main.e1d4508966f1059a.js": "7b0ea3e24493b9750928279e20a32e73c7cdd902",
+    "/index.html": "8af3f4f8cf2aedd622e8ac31edba86d27bd39e6b",
+    "/main.2ce071341f0fc1dd.js": "8206135d0eb8b2c208558c8df0ff5d9c2d4d2392",
     "/manifest.webmanifest": "bcb80908ddbf6db6dff72cdee266593ad8bc40f2",
-    "/polyfills.517521c3b778f7d0.js": "b872074d2d75a3086cb04400fff89e96847069da",
-    "/runtime.eb5339411b39c9f1.js": "9ea50e53797fa3bfab2fb19aaf14d47aa8b69553",
-    "/styles.e8593024912b02c1.css": "ee58fe087e0459404f9920ca3487b3068fdc0168"
+    "/polyfills.b0a7df245a7612d8.js": "72c9e5ccb0b43043a462427afc0a95885de8d00a",
+    "/runtime.e88628661e077246.js": "feb7d5e19ae4a74dd70c75be8b40d282a27c586b",
+    "/styles.48f7dd4add47b147.css": "1b5eeb3fcc8fdb0f95bf5277ba74dcb5265eec1a"
   },
   "navigationUrls": [
     {
