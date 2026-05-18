@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@use "theme" as *;
+@use "./theme" as *;
 
 @include mat.all-component-themes($theme);
 
