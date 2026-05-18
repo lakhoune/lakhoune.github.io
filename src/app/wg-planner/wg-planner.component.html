@@ -1,194 +1,206 @@
-<div id="setup-panel" *ngIf="!showPlan">
-  <div class="card">
-    <h1>
-      Chore Scheduler
-      <span class="sub"
-        >Define chores once — get a fair, printable plan for the whole
-        year.</span
-      >
-    </h1>
-
-    <h2>Settings</h2>
-    <div class="settings-grid">
-      <div class="field">
-        <label>Year</label>
-        <input type="number" [(ngModel)]="year" min="2020" max="2035" />
-      </div>
-      <div class="field">
-        <label>Person A</label>
-        <input type="text" [(ngModel)]="nameA" placeholder="e.g. Ben" />
-      </div>
-      <div class="field">
-        <label>Person B</label>
-        <input type="text" [(ngModel)]="nameB" placeholder="e.g. Nick" />
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <h2>Chores</h2>
-
-    <div class="tpl-label">Start from a template</div>
-    <div class="tpl-grid">
-      <div
-        class="tpl-card"
-        *ngFor="let key of templateKeys()"
-        [id]="'tpl-' + key"
-        (click)="loadTemplate(key)"
-        [class.active]="activeTemplate === key"
-      >
-        <div class="tpl-name">{{ TEMPLATES[key].label }}</div>
-        <div class="tpl-desc">{{ TEMPLATES[key].desc }}</div>
-        <div class="tpl-count">{{ TEMPLATES[key].chores.length }} chores</div>
-      </div>
-    </div>
-
-    <div class="divider" style="margin-top: 1.25rem"></div>
-
-    <div class="add-form">
-      <div class="field">
-        <label>Chore name</label>
-        <input
-          type="text"
-          [(ngModel)]="choreName"
-          placeholder="e.g. Vacuum living room"
-          (keydown.enter)="addChore()"
-        />
-      </div>
-      <div class="field">
-        <label>Frequency</label>
-        <select [(ngModel)]="choreFreq">
-          <option [value]="365">Daily</option>
-          <option [value]="156">3× per week</option>
-          <option [value]="104">2× per week</option>
-          <option [value]="52">Weekly</option>
-          <option [value]="26">Every 2 weeks</option>
-          <option [value]="12">Monthly</option>
-          <option [value]="6">Every 2 months</option>
-          <option [value]="4">Quarterly</option>
-          <option [value]="2">Every 6 months</option>
-          <option [value]="1">Yearly</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Effort</label>
-        <select [(ngModel)]="choreEffort">
-          <option [value]="1">Low (1 pt)</option>
-          <option [value]="2">Medium (2 pts)</option>
-          <option [value]="3">High (3 pts)</option>
-        </select>
-      </div>
-      <div>
-        <button class="btn-primary" (click)="addChore()">+ Add</button>
-      </div>
-    </div>
-
-    <div class="chore-list">
-      <div *ngIf="!chores.length" class="empty-state">
-        No chores yet — pick a template above or add one manually.
-      </div>
-      <div *ngFor="let c of chores" class="chore-item">
-        <span class="ci-name">{{ c.name }}</span>
-        <span class="ci-freq">{{
-          FREQ_LABELS[c.freq] || c.freq + "×/yr"
-        }}</span>
-        <span
-          class="badge"
+@if (!showPlan) {
+  <div id="setup-panel">
+    <div class="card">
+      <h1>
+        Chore Scheduler
+        <span class="sub"
+          >Define chores once — get a fair, printable plan for the whole
+          year.</span
+          >
+        </h1>
+        <h2>Settings</h2>
+        <div class="settings-grid">
+          <div class="field">
+            <label>Year</label>
+            <input type="number" [(ngModel)]="year" min="2020" max="2035" />
+          </div>
+          <div class="field">
+            <label>Person A</label>
+            <input type="text" [(ngModel)]="nameA" placeholder="e.g. Ben" />
+          </div>
+          <div class="field">
+            <label>Person B</label>
+            <input type="text" [(ngModel)]="nameB" placeholder="e.g. Nick" />
+          </div>
+        </div>
+        <div class="divider"></div>
+        <h2>Chores</h2>
+        <div class="tpl-label">Start from a template</div>
+        <div class="tpl-grid">
+          @for (key of templateKeys(); track key) {
+            <div
+              class="tpl-card"
+              [id]="'tpl-' + key"
+              (click)="loadTemplate(key)"
+              [class.active]="activeTemplate === key"
+              >
+              <div class="tpl-name">{{ TEMPLATES[key].label }}</div>
+              <div class="tpl-desc">{{ TEMPLATES[key].desc }}</div>
+              <div class="tpl-count">{{ TEMPLATES[key].chores.length }} chores</div>
+            </div>
+          }
+        </div>
+        <div class="divider" style="margin-top: 1.25rem"></div>
+        <div class="add-form">
+          <div class="field">
+            <label>Chore name</label>
+            <input
+              type="text"
+              [(ngModel)]="choreName"
+              placeholder="e.g. Vacuum living room"
+              (keydown.enter)="addChore()"
+              />
+          </div>
+          <div class="field">
+            <label>Frequency</label>
+            <select [(ngModel)]="choreFreq">
+              <option [value]="365">Daily</option>
+              <option [value]="156">3× per week</option>
+              <option [value]="104">2× per week</option>
+              <option [value]="52">Weekly</option>
+              <option [value]="26">Every 2 weeks</option>
+              <option [value]="12">Monthly</option>
+              <option [value]="6">Every 2 months</option>
+              <option [value]="4">Quarterly</option>
+              <option [value]="2">Every 6 months</option>
+              <option [value]="1">Yearly</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Effort</label>
+            <select [(ngModel)]="choreEffort">
+              <option [value]="1">Low (1 pt)</option>
+              <option [value]="2">Medium (2 pts)</option>
+              <option [value]="3">High (3 pts)</option>
+            </select>
+          </div>
+          <div>
+            <button class="btn-primary" (click)="addChore()">+ Add</button>
+          </div>
+        </div>
+        <div class="chore-list">
+          @if (!chores.length) {
+            <div class="empty-state">
+              No chores yet — pick a template above or add one manually.
+            </div>
+          }
+          @for (c of chores; track c) {
+            <div class="chore-item">
+              <span class="ci-name">{{ c.name }}</span>
+              <span class="ci-freq">{{
+                FREQ_LABELS[c.freq] || c.freq + "×/yr"
+              }}</span>
+              <span
+                class="badge"
           [ngClass]="{
             'badge-low': c.effort === 1,
             'badge-medium': c.effort === 2,
             'badge-high': c.effort === 3,
           }"
-          >{{ EFFORT_LABELS[c.effort] }}</span
-        >
-        <button class="btn-icon" (click)="removeChore(c.id)" title="Remove">
-          ✕
-        </button>
+                >{{ EFFORT_LABELS[c.effort] }}</span
+                >
+                <button class="btn-icon" (click)="removeChore(c.id)" title="Remove">
+                  ✕
+                </button>
+              </div>
+            }
+          </div>
+          <div style="text-align: right; margin-top: 0.5rem">
+            <span class="chore-count">{{ choreCountLabel }}</span>
+          </div>
+          <button class="btn-success" (click)="generatePlan()">
+            Generate Year Plan →
+          </button>
+        </div>
       </div>
-    </div>
+    }
 
-    <div style="text-align: right; margin-top: 0.5rem">
-      <span class="chore-count">{{ choreCountLabel }}</span>
-    </div>
-
-    <button class="btn-success" (click)="generatePlan()">
-      Generate Year Plan →
-    </button>
-  </div>
-</div>
-
-<div id="plan-panel" *ngIf="showPlan">
-  <div class="plan-wrap">
-    <div class="plan-top">
-      <h1 id="plan-title">{{ planTitle }}</h1>
-      <div class="plan-actions">
-        <button class="btn-blue" (click)="print()">Print</button>
-        <button class="btn-ghost" (click)="goBack()">← Edit</button>
-      </div>
-    </div>
-
-    <div class="summary-row">
-      <div class="sp-card sp-card-a">
-        <div class="sp-info">
-          <div class="sp-name">{{ nameA || "Person A" }}</div>
-          <div class="sp-pct">
-            {{ total ? ((totalA / total) * 100).toFixed(0) : 0 }}% of total
-            effort
+    @if (showPlan) {
+      <div id="plan-panel">
+        <div class="plan-wrap">
+          <div class="plan-top">
+            <h1 id="plan-title">{{ planTitle }}</h1>
+            <div class="plan-actions">
+              <button class="btn-blue" (click)="print()">Print</button>
+              <button class="btn-ghost" (click)="goBack()">← Edit</button>
+            </div>
           </div>
-        </div>
-        <div>
-          <div class="sp-pts sp-pts-a">{{ totalA }}</div>
-          <div class="sp-ptlabel">pts / year</div>
-        </div>
-      </div>
-      <div class="sp-mid">
-        <div class="big">{{ total }}</div>
-        <div class="small">total pts</div>
-        <div class="small" style="margin-top: 0.4rem">
-          {{ chores.length }} chores · {{ year }}
-        </div>
-      </div>
-      <div class="sp-card sp-card-b">
-        <div class="sp-info">
-          <div class="sp-name">{{ nameB || "Person B" }}</div>
-          <div class="sp-pct">
-            {{ total ? ((totalB / total) * 100).toFixed(0) : 0 }}% of total
-            effort
+          <div class="summary-row">
+            <div class="sp-card sp-card-a">
+              <div class="sp-info">
+                <div class="sp-name">{{ nameA || "Person A" }}</div>
+                <div class="sp-pct">
+                  {{ total ? ((totalA / total) * 100).toFixed(0) : 0 }}% of total
+                  effort
+                </div>
+              </div>
+              <div>
+                <div class="sp-pts sp-pts-a">{{ totalA }}</div>
+                <div class="sp-ptlabel">pts / year</div>
+              </div>
+            </div>
+            <div class="sp-mid">
+              <div class="big">{{ total }}</div>
+              <div class="small">total pts</div>
+              <div class="small" style="margin-top: 0.4rem">
+                {{ chores.length }} chores · {{ year }}
+              </div>
+            </div>
+            <div class="sp-card sp-card-b">
+              <div class="sp-info">
+                <div class="sp-name">{{ nameB || "Person B" }}</div>
+                <div class="sp-pct">
+                  {{ total ? ((totalB / total) * 100).toFixed(0) : 0 }}% of total
+                  effort
+                </div>
+              </div>
+              <div>
+                <div class="sp-pts sp-pts-b">{{ totalB }}</div>
+                <div class="sp-ptlabel">pts / year</div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div>
-          <div class="sp-pts sp-pts-b">{{ totalB }}</div>
-          <div class="sp-ptlabel">pts / year</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="months-grid">
-      <div class="month-card" *ngFor="let m of months">
-        <div class="month-title">{{ m.name }}</div>
-        <div *ngFor="let w of m.weeks" class="week-block">
-          <div class="wk-num">
-            WK {{ w.num }} <span class="wk-dates">{{ w.dates }}</span>
+          <div class="months-grid">
+            @for (m of months; track m) {
+              <div class="month-card">
+                <div class="month-title">{{ m.name }}</div>
+                @for (w of m.weeks; track w) {
+                  <div class="week-block">
+                    <div class="wk-num">
+                      WK {{ w.num }} <span class="wk-dates">{{ w.dates }}</span>
+                    </div>
+                    @if (w.A.length) {
+                      <div class="person-line">
+                        <span class="pl-who pl-a">{{ nameA }}</span
+                          >@for (occ of w.A; track occ) {
+                          <span class="chore-chip"
+                            >{{ occ.chore.name
+                            }}{{ occ.count > 1 ? " ×" + occ.count : "" }}</span
+                            >
+                          }
+                        </div>
+                      }
+                      @if (w.B.length) {
+                        <div class="person-line">
+                          <span class="pl-who pl-b">{{ nameB }}</span
+                            >@for (occ of w.B; track occ) {
+                            <span class="chore-chip"
+                              >{{ occ.chore.name
+                              }}{{ occ.count > 1 ? " ×" + occ.count : "" }}</span
+                              >
+                            }
+                          </div>
+                        }
+                        @if (!w.A.length && !w.B.length) {
+                          <div class="free-week">
+                            Wk {{ w.num }} — free
+                          </div>
+                        }
+                      </div>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
           </div>
-          <div *ngIf="w.A.length" class="person-line">
-            <span class="pl-who pl-a">{{ nameA }}</span
-            ><span *ngFor="let occ of w.A" class="chore-chip"
-              >{{ occ.chore.name
-              }}{{ occ.count > 1 ? " ×" + occ.count : "" }}</span
-            >
-          </div>
-          <div *ngIf="w.B.length" class="person-line">
-            <span class="pl-who pl-b">{{ nameB }}</span
-            ><span *ngFor="let occ of w.B" class="chore-chip"
-              >{{ occ.chore.name
-              }}{{ occ.count > 1 ? " ×" + occ.count : "" }}</span
-            >
-          </div>
-          <div *ngIf="!w.A.length && !w.B.length" class="free-week">
-            Wk {{ w.num }} — free
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+        }

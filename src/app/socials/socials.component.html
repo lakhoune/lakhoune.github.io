@@ -1,27 +1,28 @@
 <aside class="content socials shadow-lg">
-  <a
-    *ngFor="let social of socials"
-    [href]="social.link"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <img
-      *ngIf="getType(social.logo) === 'object'; else inline"
-      [src]="getSource(social.logo)"
-      style="width: 35px"
-      alt=""
-    />
-    <ng-template #inline>
-      <i [class]="social.logo"></i>
-    </ng-template>
-  </a>
+  @for (social of socials; track social) {
+    <a
+      [href]="social.link"
+      target="_blank"
+      rel="noopener noreferrer"
+      >
+      @if (getType(social.logo) === 'object') {
+        <img
+          [src]="getSource(social.logo)"
+          style="width: 35px"
+          alt=""
+          />
+      } @else {
+        <i [class]="social.logo"></i>
+      }
+    </a>
+  }
   <a
     (click)="openCV('CV Ben Lakhoune.pdf')"
     target="_blank"
     style="width: 35px; cursor: pointer"
     rel="noopener noreferrer"
     title="Open CV"
-  >
+    >
     <i class="bi bi-file-earmark-text"></i>
   </a>
 </aside>
