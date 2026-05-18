@@ -1,6 +1,6 @@
 @use "sass:map";
 @use "@angular/material" as mat;
-@use "src/theme" as *;
+@use "theme" as *;
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
