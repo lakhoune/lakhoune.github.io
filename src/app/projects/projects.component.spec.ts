@@ -3,6 +3,7 @@ import { ProjectsComponent } from './projects.component';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 import { ProjectComponent } from './project/project.component';
 
 const mockProjects = [
@@ -37,7 +38,7 @@ describe('ProjectsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProjectsComponent,ProjectComponent],
-      imports: [CommonModule], // Import the CommonModule here
+      imports: [CommonModule, MatCardModule], // Import the CommonModule and MatCardModule here
     }).compileComponents();
   });
 

@@ -206,16 +206,25 @@ export class TasksPlannerComponent {
         const id = occ.chore.id;
         const lastA = lastDone.get(`A-${id}`) || 0;
         const lastB = lastDone.get(`B-${id}`) || 0;
-        const gap = wA - wB;
-        const thr = occ.chore.effort;
-        let person: string;
-        if (gap >= thr) person = 'B';
-        else if (gap <= -thr) person = 'A';
-        else if (lastA > lastB) person = 'B';
-        else if (lastB > lastA) person = 'A';
-        else person = this.totalA <= this.totalB ? 'A' : 'B';
-        lastDone.set(`${person}-${id}`, w);
         const delta = occ.chore.effort * occ.count;
+
+        let person: 'A' | 'B';
+        const projectedA = this.totalA + delta;
+        const projectedB = this.totalB + delta;
+
+        if (projectedA !== projectedB) {
+          person = projectedA < projectedB ? 'A' : 'B';
+        } else {
+          const gap = wA - wB;
+          const thr = occ.chore.effort;
+          if (gap >= thr) person = 'B';
+          else if (gap <= -thr) person = 'A';
+          else if (lastA > lastB) person = 'B';
+          else if (lastB > lastA) person = 'A';
+          else person = this.totalA <= this.totalB ? 'A' : 'B';
+        }
+
+        lastDone.set(`${person}-${id}`, w);
         if (person === 'A') { A.push(occ); wA += delta; this.totalA += delta; }
         else { B.push(occ); wB += delta; this.totalB += delta; }
       }

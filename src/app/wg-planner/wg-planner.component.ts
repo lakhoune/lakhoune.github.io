@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-wg-planner',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './wg-planner.component.html',
-  styleUrls: ['./wg-planner.component.scss']
+    selector: 'app-wg-planner',
+    imports: [CommonModule, FormsModule],
+    templateUrl: './wg-planner.component.html',
+    styleUrls: ['./wg-planner.component.scss']
 })
 export class WgPlannerComponent {
   year = 2026;

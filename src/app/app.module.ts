@@ -1,5 +1,5 @@
 import { NgModule, isDevMode } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,50 +27,43 @@ import { HomeComponent } from './home/home.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ExperienceComponent } from './experiences/experience/experience.component';
 import { TokyoComponent } from './blog/tokyo/tokyo.component';
-@NgModule({
-  declarations: [
-    AppComponent,
-    ProjectsComponent,
-    ProjectComponent,
-    AboutMeComponent,
-    SocialsComponent,
-    ExperiencesComponent,
-    ExperienceComponent,
-    WifiQrComponent,
-    HomeComponent,
-    TokyoComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    MatCardModule,
-    MatSidenavModule,
-    MatInputModule,
-    MatListModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatTooltipModule,
-    MatMenuModule,
-    HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000',
-    }),
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        ProjectsComponent,
+        ProjectComponent,
+        AboutMeComponent,
+        SocialsComponent,
+        ExperiencesComponent,
+        ExperienceComponent,
+        WifiQrComponent,
+        HomeComponent,
+        TokyoComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSnackBarModule,
+        MatCardModule,
+        MatSidenavModule,
+        MatInputModule,
+        MatListModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatTooltipModule,
+        MatMenuModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the app is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000',
+        }),
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        })], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}

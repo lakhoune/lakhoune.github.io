@@ -19,7 +19,10 @@ const mockProject: Project = {
   },
 };
 
-@Component({ selector: 'app-test', template: '' })
+@Component({
+    selector: 'app-test', template: '',
+    standalone: false
+})
 class TestComponent {
   @Input() project: Project = new EmptyProject();
 }

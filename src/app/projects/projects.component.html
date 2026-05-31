@@ -3,10 +3,11 @@
 </div>
 
 <div class="row projects justify-content-center">
-  <div
-    *ngFor="let project of projects"
-    class="col-12 col-md-4 col-xl-3 col-xxl-3 mb-2"
-  >
-    <app-project [project]="project"></app-project>
-  </div>
+  @for (project of projects; track project) {
+    <div
+      class="col-12 col-md-4 col-xl-3 col-xxl-3 mb-2"
+      >
+      <app-project [project]="project"></app-project>
+    </div>
+  }
 </div>

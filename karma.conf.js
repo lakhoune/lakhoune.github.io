@@ -11,15 +11,14 @@ module.exports = function (config) {
     // ignore if puppeteer isn't installed — fallback to system Chrome
   }
 
-  config.set({
+    config.set({
     basePath: "",
-    frameworks: ["jasmine", "@angular-devkit/build-angular"],
+    frameworks: ["jasmine"],
     plugins: [
       require("karma-jasmine"),
       require("karma-chrome-launcher"),
       require("karma-jasmine-html-reporter"),
       require("karma-coverage"),
-      require("@angular-devkit/build-angular/plugins/karma"),
     ],
     client: {
       jasmine: {

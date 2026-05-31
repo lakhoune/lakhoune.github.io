@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatOptionModule } from '@angular/material/core';
 import { MatCard, MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
@@ -17,7 +19,7 @@ describe('AppComponent', () => {
     const snackBarSpyObj = jasmine.createSpyObj('MatSnackBar', ['open']);
 
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule,MatSidenavModule, MatOptionModule,MatCardModule,BrowserAnimationsModule,MatToolbarModule],
+      imports: [RouterTestingModule, MatSidenavModule, MatOptionModule, MatCardModule, MatButtonModule, MatListModule, BrowserAnimationsModule, MatToolbarModule],
       declarations: [AppComponent],
       providers: [{ provide: MatSnackBar, useValue: snackBarSpyObj }],
     }).compileComponents();
