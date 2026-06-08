@@ -18,7 +18,8 @@ jobs:
       run: npm ci
     - name: Set CHROME_BIN from Puppeteer
       run: |
-        echo "CHROME_BIN=$(node -e 'console.log(require(\"puppeteer\").executablePath())')" >> $GITHUB_ENV
+        CHROME_BIN=$(node -e 'console.log(require("puppeteer").executablePath())')
+        echo "CHROME_BIN=$CHROME_BIN" >> $GITHUB_ENV
     - name: Run tests
       run: npx ng test --watch=false --no-progress
   build:
