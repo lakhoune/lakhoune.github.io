@@ -14,14 +14,20 @@
             <label>Year</label>
             <input type="number" [(ngModel)]="year" min="2020" max="2035" />
           </div>
-          <div class="field">
-            <label>Person A</label>
-            <input type="text" [(ngModel)]="nameA" placeholder="e.g. Ben" />
-          </div>
-          <div class="field">
-            <label>Person B</label>
-            <input type="text" [(ngModel)]="nameB" placeholder="e.g. Nick" />
-          </div>
+            <div class="field persons">
+              <label>People</label>
+              <div class="persons-list">
+                @for (let i = 0; i < persons.length; i = i + 1) {
+                  <div class="person-row">
+                    <input type="text" [(ngModel)]="persons[i]" placeholder="e.g. Ben" />
+                    <button class="btn-ghost" (click)="removePerson(i)" [disabled]="persons.length<=1">Remove</button>
+                  </div>
+                }
+                <div style="margin-top:0.5rem">
+                  <button class="btn-primary" (click)="addPerson()">+ Add person</button>
+                </div>
+              </div>
+            </div>
         </div>
         <div class="divider"></div>
         <h2>Chores</h2>
@@ -78,7 +84,7 @@
             <button class="btn-primary" (click)="addChore()">+ Add</button>
           </div>
         </div>
-        <div class="chore-list">
+          <div class="chore-list">
           @if (!chores.length) {
             <div class="empty-state">
               No chores yet — pick a template above or add one manually.
@@ -126,38 +132,24 @@
             </div>
           </div>
           <div class="summary-row">
-            <div class="sp-card sp-card-a">
-              <div class="sp-info">
-                <div class="sp-name">{{ nameA || "Person A" }}</div>
-                <div class="sp-pct">
-                  {{ total ? ((totalA / total) * 100).toFixed(0) : 0 }}% of total
-                  effort
+            <div class="people-summary">
+              @for (let i = 0; i < persons.length; i = i + 1) {
+                <div class="sp-card">
+                  <div class="sp-info">
+                    <div class="sp-name">{{ persons[i] || ('Person ' + (i+1)) }}</div>
+                    <div class="sp-pct">{{ total ? ((totals[i] || 0) / total * 100).toFixed(0) : 0 }}% of total effort</div>
+                  </div>
+                  <div>
+                    <div class="sp-pts">{{ totals[i] || 0 }}</div>
+                    <div class="sp-ptlabel">pts / year</div>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <div class="sp-pts sp-pts-a">{{ totalA }}</div>
-                <div class="sp-ptlabel">pts / year</div>
-              </div>
+              }
             </div>
             <div class="sp-mid">
               <div class="big">{{ total }}</div>
               <div class="small">total pts</div>
-              <div class="small" style="margin-top: 0.4rem">
-                {{ chores.length }} chores · {{ year }}
-              </div>
-            </div>
-            <div class="sp-card sp-card-b">
-              <div class="sp-info">
-                <div class="sp-name">{{ nameB || "Person B" }}</div>
-                <div class="sp-pct">
-                  {{ total ? ((totalB / total) * 100).toFixed(0) : 0 }}% of total
-                  effort
-                </div>
-              </div>
-              <div>
-                <div class="sp-pts sp-pts-b">{{ totalB }}</div>
-                <div class="sp-ptlabel">pts / year</div>
-              </div>
+              <div class="small" style="margin-top: 0.4rem">{{ chores.length }} chores · {{ year }}</div>
             </div>
           </div>
           <div class="months-grid">
@@ -169,32 +161,16 @@
                     <div class="wk-num">
                       WK {{ w.num }} <span class="wk-dates">{{ w.dates }}</span>
                     </div>
-                    @if (w.A.length) {
-                      <div class="person-line">
-                        <span class="pl-who pl-a">{{ nameA }}</span
-                          >@for (occ of w.A; track occ) {
-                          <span class="chore-chip"
-                            >{{ occ.chore.name
-                            }}{{ occ.count > 1 ? " ×" + occ.count : "" }}</span
-                            >
-                          }
-                        </div>
-                      }
-                      @if (w.B.length) {
-                        <div class="person-line">
-                          <span class="pl-who pl-b">{{ nameB }}</span
-                            >@for (occ of w.B; track occ) {
-                            <span class="chore-chip"
-                              >{{ occ.chore.name
-                              }}{{ occ.count > 1 ? " ×" + occ.count : "" }}</span
-                              >
-                            }
+                        @for (let i = 0; i < persons.length; i = i + 1) {
+                          <div class="person-line" *ngIf="(w[persons[i]] || []).length">
+                            <span class="pl-who">{{ persons[i] }}</span
+                              >@for (occ of (w[persons[i]] || []); track occ) {
+                              <span class="chore-chip">{{ occ.chore.name }}{{ occ.count > 1 ? " ×" + occ.count : "" }}</span>
+                              }
                           </div>
                         }
-                        @if (!w.A.length && !w.B.length) {
-                          <div class="free-week">
-                            Wk {{ w.num }} — free
-                          </div>
+                        @if (persons.length && persons.every(p => !(w[p] || []).length)) {
+                          <div class="free-week">Wk {{ w.num }} — free</div>
                         }
                       </div>
                     }

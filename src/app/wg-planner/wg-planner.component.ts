@@ -11,8 +11,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class WgPlannerComponent {
   year = 2026;
-  nameA = '';
-  nameB = '';
+  // support N persons instead of just A/B
+  persons: string[] = ['Person A', 'Person B'];
   choreName = '';
   choreFreq = 52;
   choreEffort = 2;
@@ -108,8 +108,7 @@ export class WgPlannerComponent {
 
   // Computed plan state
   planTitle = '';
-  totalA = 0;
-  totalB = 0;
+  totals: number[] = [];
   total = 0;
   months: any[] = [];
 
@@ -138,6 +137,16 @@ export class WgPlannerComponent {
     if (!name) return;
     this.chores.push({ id: this.nextId++, name, freq: +this.choreFreq, effort: +this.choreEffort });
     this.choreName = '';
+  }
+
+  addPerson(name?: string) {
+    const n = (name || '').trim();
+    this.persons.push(n || `Person ${this.persons.length + 1}`);
+  }
+
+  removePerson(idx: number) {
+    if (this.persons.length <= 1) return;
+    this.persons.splice(idx, 1);
   }
 
   removeChore(id: number) {
@@ -172,8 +181,7 @@ export class WgPlannerComponent {
   generatePlan() {
     if (!this.chores.length) return alert('Add at least one chore first.');
     const year = +this.year || 2026;
-    const nameA = (this.nameA || 'Person A').trim();
-    const nameB = (this.nameB || 'Person B').trim();
+    const names = this.persons.map(p => (p || '').trim() || 'Unnamed');
 
     const byWeek: any[] = Array.from({ length: 53 }, () => []);
     for (const chore of this.chores) {
@@ -189,37 +197,41 @@ export class WgPlannerComponent {
       }
     }
 
-    const lastDone = new Map();
+    // prepare lastDone and totals for N persons
+    const lastDone = new Map<string, number>();
+    this.totals = Array.from({ length: names.length }, () => 0);
     this.chores.forEach((c, i) => {
-      lastDone.set(`A-${c.id}`, i % 2 === 0 ? -99 : 0);
-      lastDone.set(`B-${c.id}`, i % 2 === 0 ? 0 : -99);
+      for (let p = 0; p < names.length; p++) lastDone.set(`${p}-${c.id}`, p % 2 === 0 ? -99 : 0);
     });
 
-    this.totalA = 0; this.totalB = 0;
     const schedule: any = {};
 
     for (let w = 1; w <= 52; w++) {
       const occs = (byWeek[w] || []).slice().sort((a: any, b: any) => b.chore.effort * b.count - a.chore.effort * a.count);
-      let wA = 0, wB = 0;
-      const A: any[] = [], B: any[] = [];
+      const weekSlots: any[] = Array.from({ length: names.length }, () => []);
       for (const occ of occs) {
         const id = occ.chore.id;
-        const lastA = lastDone.get(`A-${id}`) || 0;
-        const lastB = lastDone.get(`B-${id}`) || 0;
-        const gap = wA - wB;
-        const thr = occ.chore.effort;
-        let person: string;
-        if (gap >= thr) person = 'B';
-        else if (gap <= -thr) person = 'A';
-        else if (lastA > lastB) person = 'B';
-        else if (lastB > lastA) person = 'A';
-        else person = this.totalA <= this.totalB ? 'A' : 'B';
-        lastDone.set(`${person}-${id}`, w);
         const delta = occ.chore.effort * occ.count;
-        if (person === 'A') { A.push(occ); wA += delta; this.totalA += delta; }
-        else { B.push(occ); wB += delta; this.totalB += delta; }
+
+        // choose person with smallest total; tie-break using lastDone
+        let best = 0;
+        for (let p = 1; p < names.length; p++) {
+          if ((this.totals[p] || 0) < (this.totals[best] || 0)) best = p;
+          else if ((this.totals[p] || 0) === (this.totals[best] || 0)) {
+            const lastBest = lastDone.get(`${best}-${id}`) || 0;
+            const lastP = lastDone.get(`${p}-${id}`) || 0;
+            if (lastP < lastBest) best = p;
+          }
+        }
+
+        lastDone.set(`${best}-${id}`, w);
+        weekSlots[best].push(occ);
+        this.totals[best] += delta;
       }
-      schedule[w] = { A, B };
+
+      const mapping: any = {};
+      for (let p = 0; p < names.length; p++) mapping[names[p]] = weekSlots[p];
+      schedule[w] = mapping;
     }
 
     function weekToMonth(yearLocal: number, week: number, weekStartDateFn: any) {
@@ -230,18 +242,18 @@ export class WgPlannerComponent {
     const monthWeeks: number[][] = Array.from({ length: 12 }, () => []);
     for (let w = 1; w <= 52; w++) monthWeeks[weekToMonth(year, w, this.weekStartDate.bind(this))].push(w);
 
-    this.total = this.totalA + this.totalB;
-    this.planTitle = `${nameA} & ${nameB} — Chore Plan ${year}`;
+    this.total = this.totals.reduce((s, v) => s + v, 0);
+    this.planTitle = `${names.join(' & ')} — Chore Plan ${year}`;
 
     this.months = monthWeeks.map((weeks, m) => {
       if (!weeks.length) return null;
       const weeksArr = weeks.map(w => {
-        const s = schedule[w] || { A: [], B: [] };
+        const s = schedule[w] || {};
         return {
           num: w,
           dates: this.weekDates(year, w),
-          A: s.A,
-          B: s.B
+          // keep mapping by person name so template can read w[person]
+          ...s
         };
       });
       return { name: this.MONTH_NAMES[m], weeks: weeksArr };
