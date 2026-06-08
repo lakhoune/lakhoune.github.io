@@ -63,9 +63,16 @@ module.exports = function (config) {
       ChromeHeadlessCI: {
         base: "ChromeHeadless",
         flags: [
+          "--headless=new",
           "--no-sandbox",
           "--disable-setuid-sandbox",
           "--disable-dev-shm-usage",
+          "--disable-gpu",
+          "--disable-extensions",
+          "--disable-background-networking",
+          "--disable-default-apps",
+          "--disable-translate",
+          "--remote-debugging-port=9222",
         ],
       },
     },

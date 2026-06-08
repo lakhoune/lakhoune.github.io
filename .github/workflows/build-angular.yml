@@ -16,13 +16,10 @@ jobs:
         cache: 'npm'
     - name: Install
       run: npm ci
-    - name: Set up Chrome
-      uses: browser-actions/setup-chrome@v1
-      with:
-        chrome-version: latest
+    - name: Set CHROME_BIN from Puppeteer
+      run: |
+        echo "CHROME_BIN=$(node -e 'console.log(require(\"puppeteer\").executablePath())')" >> $GITHUB_ENV
     - name: Run tests
-      env:
-        CHROME_BIN: /usr/bin/google-chrome-stable
       run: npx ng test --watch=false --no-progress
   build:
     runs-on: ubuntu-latest
