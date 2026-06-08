@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SocialsComponent } from './socials.component';
 import { socials } from './socials';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('SocialsComponent', () => {
   let component: SocialsComponent;
@@ -12,7 +12,7 @@ describe('SocialsComponent', () => {
     await TestBed.configureTestingModule({
     declarations: [SocialsComponent],
     imports: [],
-    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+    providers: [provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
 }).compileComponents();
   });
 

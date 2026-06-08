@@ -11,8 +11,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class TasksPlannerComponent {
   year = 2026;
-  nameA = '';
-  nameB = '';
+  // dynamic persons list (supports more than two)
+  persons: string[] = ['Person A', 'Person B'];
   choreName = '';
   choreFreq = 52;
   choreEffort = 2;
@@ -108,8 +108,7 @@ export class TasksPlannerComponent {
 
   // Computed plan state
   planTitle = '';
-  totalA = 0;
-  totalB = 0;
+  totals: number[] = [];
   total = 0;
   months: any[] = [];
 
@@ -138,6 +137,17 @@ export class TasksPlannerComponent {
     if (!name) return;
     this.chores.push({ id: this.nextId++, name, freq: +this.choreFreq, effort: +this.choreEffort });
     this.choreName = '';
+  }
+
+  addPerson(name?: string) {
+    const n = (name || '').trim();
+    const val = n || `Person ${this.persons.length + 1}`;
+    this.persons.push(val);
+  }
+
+  removePerson(index: number) {
+    if (this.persons.length <= 1) return;
+    this.persons.splice(index, 1);
   }
 
   removeChore(id: number) {
@@ -172,8 +182,9 @@ export class TasksPlannerComponent {
   generatePlan() {
     if (!this.chores.length) return alert('Add at least one chore first.');
     const year = +this.year || 2026;
-    const nameA = (this.nameA || 'Person A').trim();
-    const nameB = (this.nameB || 'Person B').trim();
+    const names = this.persons.map(p => (p || '').trim() || 'Unnamed');
+    // initialize totals per person
+    this.totals = Array.from({ length: names.length }, () => 0);
 
     const byWeek: any[] = Array.from({ length: 53 }, () => []);
     for (const chore of this.chores) {
@@ -188,47 +199,45 @@ export class TasksPlannerComponent {
         }
       }
     }
-
-    const lastDone = new Map();
+    const lastDone = new Map<string, number>();
+    // seed lastDone so assignment rotates
     this.chores.forEach((c, i) => {
-      lastDone.set(`A-${c.id}`, i % 2 === 0 ? -99 : 0);
-      lastDone.set(`B-${c.id}`, i % 2 === 0 ? 0 : -99);
+      for (let p = 0; p < names.length; p++) lastDone.set(`${p}-${c.id}`, p % 2 === 0 ? -99 : 0);
     });
 
-    this.totalA = 0; this.totalB = 0;
     const schedule: any = {};
 
     for (let w = 1; w <= 52; w++) {
       const occs = (byWeek[w] || []).slice().sort((a: any, b: any) => b.chore.effort * b.count - a.chore.effort * a.count);
-      let wA = 0, wB = 0;
-      const A: any[] = [], B: any[] = [];
+      const weekPersonDeltas = Array.from({ length: names.length }, () => 0);
+      const weekSlots: any[] = Array.from({ length: names.length }, () => []);
       for (const occ of occs) {
         const id = occ.chore.id;
-        const lastA = lastDone.get(`A-${id}`) || 0;
-        const lastB = lastDone.get(`B-${id}`) || 0;
         const delta = occ.chore.effort * occ.count;
 
-        let person: 'A' | 'B';
-        const projectedA = this.totalA + delta;
-        const projectedB = this.totalB + delta;
-
-        if (projectedA !== projectedB) {
-          person = projectedA < projectedB ? 'A' : 'B';
-        } else {
-          const gap = wA - wB;
-          const thr = occ.chore.effort;
-          if (gap >= thr) person = 'B';
-          else if (gap <= -thr) person = 'A';
-          else if (lastA > lastB) person = 'B';
-          else if (lastB > lastA) person = 'A';
-          else person = this.totalA <= this.totalB ? 'A' : 'B';
+        // choose person with smallest total; break ties using lastDone
+        let bestIdx = 0;
+        let bestVal = this.totals[0] || 0;
+        for (let p = 1; p < names.length; p++) {
+          const val = this.totals[p] || 0;
+          if (val < bestVal) { bestIdx = p; bestVal = val; }
+          else if (val === bestVal) {
+            const lastBest = lastDone.get(`${bestIdx}-${id}`) || 0;
+            const lastP = lastDone.get(`${p}-${id}`) || 0;
+            if (lastP < lastBest) bestIdx = p;
+          }
         }
 
-        lastDone.set(`${person}-${id}`, w);
-        if (person === 'A') { A.push(occ); wA += delta; this.totalA += delta; }
-        else { B.push(occ); wB += delta; this.totalB += delta; }
+        lastDone.set(`${bestIdx}-${id}`, w);
+        weekSlots[bestIdx].push(occ);
+        weekPersonDeltas[bestIdx] += delta;
+        this.totals[bestIdx] += delta;
       }
-      schedule[w] = { A, B };
+
+      // convert to named mapping for template consumption
+      const mapping: any = {};
+      for (let p = 0; p < names.length; p++) mapping[names[p]] = weekSlots[p];
+      schedule[w] = mapping;
     }
 
     function weekToMonth(yearLocal: number, week: number, weekStartDateFn: any) {
@@ -239,8 +248,8 @@ export class TasksPlannerComponent {
     const monthWeeks: number[][] = Array.from({ length: 12 }, () => []);
     for (let w = 1; w <= 52; w++) monthWeeks[weekToMonth(year, w, this.weekStartDate.bind(this))].push(w);
 
-    this.total = this.totalA + this.totalB;
-    this.planTitle = `${nameA} & ${nameB} — Chore Plan ${year}`;
+    this.total = this.totals.reduce((s, v) => s + v, 0);
+    this.planTitle = `${names.join(' & ')} — Chore Plan ${year}`;
 
     this.months = monthWeeks.map((weeks, m) => {
       if (!weeks.length) return null;
@@ -258,6 +267,17 @@ export class TasksPlannerComponent {
 
     this.showPlan = true;
     setTimeout(() => window.scrollTo(0,0), 0);
+  }
+
+  get planBalanceDiff(): number {
+    if (!this.totals || !this.totals.length) return 0;
+    const min = Math.min(...this.totals);
+    const max = Math.max(...this.totals);
+    return Math.abs(max - min);
+  }
+
+  isPlanBalanced(maxDiff = 3): boolean {
+    return this.planBalanceDiff <= maxDiff;
   }
 
   goBack() {

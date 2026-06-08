@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { environment } from '../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AppComponent {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { toDataURL } from 'qrcode';
@@ -6,6 +6,7 @@ import { toDataURL } from 'qrcode';
     selector: 'app-wifi-qr',
     templateUrl: './wifi-qr.component.html',
     styleUrls: ['./wifi-qr.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class WifiQrComponent implements OnInit {

@@ -19,9 +19,11 @@ $accent-contrast: mat.m2-get-contrast-color-from-palette($accent-palette, 'defau
 $accent-lighter: mat.m2-get-color-from-palette($accent-palette, 'lighter');
 
 /* ── Setup ── */
-#setup-panel { max-width: 740px; margin: 2rem auto; padding: 0 1rem; }
 
-.card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04); }
+/* Mobile-first layout */
+#setup-panel { width: 100%; max-width: 800px; margin: 1rem auto; padding: 0 1rem; }
+
+.card { background: white; border-radius: 12px; padding: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
 
 h1 { font-size: 1.75rem; font-weight: 800; }
 h1 .sub { font-size: 0.88rem; font-weight: 400; color: #999; display: block; margin: 0.2rem 0 1.75rem; }
@@ -29,8 +31,14 @@ h2 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spa
 
 .divider { height: 1px; background: #f0f0f0; margin: 1.5rem -2rem; }
 
-.settings-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 0; }
-.add-form { display: grid; grid-template-columns: 2fr 1.8fr 1fr auto; gap: 0.75rem; align-items: flex-end; }
+.settings-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-bottom: 0; }
+.add-form { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+
+/* larger screens */
+@media (min-width: 720px) {
+  .settings-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .add-form { grid-template-columns: 2fr 1.8fr 1fr auto; align-items: flex-end; }
+}
 
 .field label { display: block; font-size: 0.75rem; font-weight: 600; color: #777; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35rem; }
 
@@ -68,7 +76,8 @@ button:active { transform: scale(0.97); }
 .empty-state { color: #ccc; font-size: 0.85rem; text-align: center; padding: 1.5rem 0; }
 
 .tpl-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #bbb; margin-bottom: 0.55rem; }
-.tpl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.55rem; }
+.tpl-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+@media (min-width: 720px) { .tpl-grid { grid-template-columns: repeat(4, 1fr); } }
 .tpl-card { border: 1.5px solid #e8e8e8; border-radius: 8px; padding: 0.65rem 0.8rem; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
 .tpl-card:hover { border-color: $primary; background: $primary-lighter; }
 .tpl-card.active { border-color: $primary; background: $primary-lighter; }
@@ -78,12 +87,14 @@ button:active { transform: scale(0.97); }
 
 /* ── Plan ── */
 #plan-panel { display: block; }
-.plan-wrap { max-width: 1080px; margin: 2rem auto; padding: 0 1rem 3rem; }
-.plan-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.plan-wrap { max-width: 1080px; margin: 1.25rem auto; padding: 0 1rem 2rem; }
+.plan-top { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+@media (min-width: 720px) { .plan-top { flex-direction: row; align-items: center; justify-content: space-between; } }
 .plan-top h1 { font-size: 1.4rem; }
 .plan-actions { display: flex; gap: 0.5rem; }
-.summary-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
-.sp-card { flex: 1; display: flex; align-items: center; gap: 1.25rem; padding: 1.1rem 1.4rem; border-radius: 10px; border: 2px solid transparent; }
+.summary-row { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem; }
+.people-summary { display: flex; gap: 0.5rem; overflow:auto; }
+.sp-card { min-width: 140px; display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.04); background: white; }
 .sp-card-a { background: $primary-lighter; border-color: $primary; }
 .sp-card-b { background: $accent-lighter; border-color: $accent; }
 .sp-info { flex: 1; }
@@ -97,7 +108,8 @@ button:active { transform: scale(0.97); }
 .sp-mid .big { font-size: 1.6rem; font-weight: 900; }
 .sp-mid .small { font-size: 0.75rem; color: #bbb; margin-top: 0.15rem; }
 
-.months-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.months-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+@media (min-width: 900px) { .months-grid { grid-template-columns: repeat(3, 1fr); } }
 .month-card { border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; font-size: 0.78rem; background: white; }
 .month-title { background: #2c3e50; color: white; padding: 0.4rem 0.75rem; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em; }
 .week-block { padding: 0.35rem 0.75rem; border-bottom: 1px solid #f5f5f5; }

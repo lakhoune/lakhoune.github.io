@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { experiences } from './experiences';
 import { HttpClient } from '@angular/common/http';
 import { MatButton } from '@angular/material/button';
@@ -6,6 +6,7 @@ import { MatButton } from '@angular/material/button';
     selector: 'app-experiences',
     templateUrl: './experiences.component.html',
     styleUrls: ['./experiences.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ExperiencesComponent implements OnInit {

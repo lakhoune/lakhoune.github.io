@@ -1,0 +1,79 @@
+<div class="tp">
+  <h2>Tasks Planner</h2>
+
+  <section class="panel">
+    <h3>People</h3>
+    <div class="people">
+      <div *ngFor="let p of persons; let i = index" class="person-row">
+        <input [(ngModel)]="persons[i]" placeholder="Person name" />
+        <button (click)="removePerson(i)" [disabled]="persons.length<=1">Remove</button>
+      </div>
+      <div class="person-add">
+        <button (click)="addPerson()">Add person</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h3>Chores</h3>
+    <div class="add-chore">
+      <input [(ngModel)]="choreName" placeholder="Chore name" />
+      <select [(ngModel)]="choreFreq">
+        <option [value]="365">Daily</option>
+        <option [value]="156">3×/week</option>
+        <option [value]="104">2×/week</option>
+        <option [value]="52">Weekly</option>
+        <option [value]="26">Every 2 wks</option>
+        <option [value]="12">Monthly</option>
+        <option [value]="4">Quarterly</option>
+        <option [value]="1">Yearly</option>
+      </select>
+      <select [(ngModel)]="choreEffort">
+        <option [value]="1">Low</option>
+        <option [value]="2">Medium</option>
+        <option [value]="3">High</option>
+      </select>
+      <button (click)="addChore()">Add</button>
+    </div>
+
+    <ul class="chores-list">
+      <li *ngFor="let c of chores">{{c.name}} — {{FREQ_LABELS[c.freq] || c.freq}} • {{EFFORT_LABELS[c.effort] || c.effort}}
+        <button (click)="removeChore(c.id)">Remove</button>
+      </li>
+    </ul>
+  </section>
+
+  <section class="panel controls">
+    <button (click)="generatePlan()">Generate Plan</button>
+    <div class="summary">{{choreCountLabel}}</div>
+  </section>
+
+  <section *ngIf="showPlan" class="plan">
+    <header>
+      <h3>{{planTitle}}</h3>
+      <div class="totals">
+        <div *ngFor="let p of persons; let i = index">{{p}}: {{totals[i] || 0}} pts/yr</div>
+        <div class="total">Total: {{total}} pts/yr</div>
+      </div>
+      <button (click)="goBack()">Back</button>
+      <button (click)="print()">Print</button>
+    </header>
+
+    <div class="months">
+      <div *ngFor="let m of months" class="month">
+        <h4>{{m.name}}</h4>
+        <div *ngFor="let w of m.weeks" class="week">
+          <div class="week-meta">Week {{w.num}} — {{w.dates}}</div>
+          <div class="assignments">
+            <div *ngFor="let p of persons" class="person-col">
+              <div class="person-name">{{p}}</div>
+              <ul>
+                <li *ngFor="let occ of (w[p] || [])">{{occ.chore.name}} <span class="eff">({{occ.chore.effort}})</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

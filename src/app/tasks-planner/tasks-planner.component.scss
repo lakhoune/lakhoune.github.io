@@ -1,0 +1,21 @@
+.tp { padding: 12px; font-family: Arial, Helvetica, sans-serif; }
+.panel { background: #fff; padding: 12px; margin-bottom: 12px; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+.people .person-row { display: flex; gap: 8px; margin-bottom: 8px; }
+.people input { flex: 1; padding: 8px; }
+.add-chore { display: flex; gap: 8px; flex-wrap: wrap; }
+.add-chore input, .add-chore select { padding: 8px; }
+.chores-list { margin: 8px 0 0 0; padding: 0; list-style: none; }
+.chores-list li { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #f0f0f0; }
+.controls { display:flex; gap:12px; align-items:center; }
+.plan header { display:flex; flex-direction:column; gap:8px; margin-bottom:12px; }
+.totals { display:flex; gap:12px; flex-wrap:wrap; }
+.months { display:flex; flex-direction:column; gap:16px; }
+.week { padding:8px; border-radius:6px; background:#fafafa; }
+.week-meta { font-size:0.9rem; color:#666; margin-bottom:6px; }
+.assignments { display:flex; gap:8px; overflow:auto; }
+.person-col { min-width:140px; background:#fff; padding:8px; border-radius:6px; box-shadow:0 1px 2px rgba(0,0,0,0.03); }
+.person-name { font-weight:600; margin-bottom:6px; }
+@media (min-width: 720px) {
+  .months { flex-direction:row; flex-wrap:wrap; }
+  .month { width: 48%; }
+}

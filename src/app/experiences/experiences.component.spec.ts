@@ -7,7 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ExperiencesComponent } from './experiences.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 describe('ExperienceComponent', () => {
   let component: ExperiencesComponent;
@@ -17,7 +17,7 @@ describe('ExperienceComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ExperiencesComponent, ExperienceComponent],
       imports: [BrowserAnimationsModule, MatButtonModule, MatCardModule, MatMenuModule],
-      providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+      providers: [provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()]
     }).compileComponents();
   });
 
