@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-wg-planner',
     imports: [CommonModule, FormsModule],
     templateUrl: './wg-planner.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./wg-planner.component.scss']
 })
 export class WgPlannerComponent {

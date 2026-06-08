@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { socials } from './socials';
 import { HttpClient } from '@angular/common/http';
 
@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
     selector: 'app-socials',
     templateUrl: './socials.component.html',
     styleUrls: ['./socials.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SocialsComponent implements OnInit {
