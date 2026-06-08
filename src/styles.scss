@@ -4,7 +4,7 @@
 @include mat.all-component-themes($theme);
 
 /* Minimal fallback styles */
-@import "./styles-fallback.scss";
+@use "./styles-fallback" as *;
 
 html, body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 section { margin-bottom: 2rem; }
