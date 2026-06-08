@@ -20,6 +20,11 @@ jobs:
       run: |
         CHROME_BIN=$(node -e 'console.log(require("puppeteer").executablePath())')
         echo "CHROME_BIN=$CHROME_BIN" >> $GITHUB_ENV
+    - name: Verify Chrome binary
+      run: |
+        echo "CHROME_BIN=$CHROME_BIN"
+        "$CHROME_BIN" --version
+        ldd "$CHROME_BIN" | grep -i 'not found' || true
     - name: Run tests
       run: npx ng test --watch=false --no-progress
   build:
