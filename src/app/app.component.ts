@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

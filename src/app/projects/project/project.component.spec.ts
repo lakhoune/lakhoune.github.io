@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { EmptyProject, Project } from 'src/app/models/project.model';
+import { EmptyProject, Project } from '../../models/project.model';
 import { ProjectComponent } from './project.component';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
