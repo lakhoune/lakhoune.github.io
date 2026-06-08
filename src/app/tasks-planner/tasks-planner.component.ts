@@ -260,6 +260,14 @@ export class TasksPlannerComponent {
     setTimeout(() => window.scrollTo(0,0), 0);
   }
 
+  get planBalanceDiff(): number {
+    return Math.abs(this.totalA - this.totalB);
+  }
+
+  isPlanBalanced(maxDiff = 3): boolean {
+    return this.planBalanceDiff <= maxDiff;
+  }
+
   goBack() {
     this.showPlan = false;
   }
