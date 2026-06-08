@@ -16,9 +16,20 @@ jobs:
         cache: 'npm'
     - name: Install
       run: npm ci
-    - name: Set CHROME_BIN from Puppeteer
+    - name: Install Chrome for CI
+      uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: latest
+    - name: Set CHROME_BIN from installed Chrome
       run: |
-        CHROME_BIN=$(node -e 'console.log(require("puppeteer").executablePath())')
+        CHROME_BIN=$(find /opt/hostedtoolcache/setup-chrome -type f -name chrome | head -n 1)
+        if [ -z "$CHROME_BIN" ]; then
+          CHROME_BIN=$(command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+        fi
+        if [ -z "$CHROME_BIN" ]; then
+          echo "No Chrome binary found"
+          exit 1
+        fi
         echo "CHROME_BIN=$CHROME_BIN" >> $GITHUB_ENV
     - name: Verify Chrome binary
       run: |

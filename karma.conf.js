@@ -3,10 +3,10 @@
 const isCI = !!process.env.CI;
 
 module.exports = function (config) {
-  // Prefer Puppeteer's Chromium when available (works in CI and restricted macOS)
+  // Prefer an already-set CHROME_BIN, otherwise fall back to Puppeteer's Chromium.
   try {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    process.env.CHROME_BIN = require('puppeteer').executablePath();
+    process.env.CHROME_BIN = process.env.CHROME_BIN || require('puppeteer').executablePath();
   } catch (e) {
     // ignore if puppeteer isn't installed — fallback to system Chrome
   }
