@@ -263,6 +263,10 @@ export class WgPlannerComponent {
     setTimeout(() => window.scrollTo(0,0), 0);
   }
 
+  weekIsFree(w: any) {
+    return this.persons && this.persons.length && this.persons.every(p => !(w[p] || []).length);
+  }
+
   goBack() {
     this.showPlan = false;
   }

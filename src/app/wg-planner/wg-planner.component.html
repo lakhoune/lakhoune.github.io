@@ -17,7 +17,7 @@
             <div class="field persons">
               <label>People</label>
               <div class="persons-list">
-                @for (let i = 0; i < persons.length; i = i + 1) {
+                @for (person of persons; track person; let i = $index) {
                   <div class="person-row">
                     <input type="text" [(ngModel)]="persons[i]" placeholder="e.g. Ben" />
                     <button class="btn-ghost" (click)="removePerson(i)" [disabled]="persons.length<=1">Remove</button>
@@ -133,10 +133,10 @@
           </div>
           <div class="summary-row">
             <div class="people-summary">
-              @for (let i = 0; i < persons.length; i = i + 1) {
+              @for (person of persons; track person; let i = $index) {
                 <div class="sp-card">
                   <div class="sp-info">
-                    <div class="sp-name">{{ persons[i] || ('Person ' + (i+1)) }}</div>
+                    <div class="sp-name">{{ person || ('Person ' + (i+1)) }}</div>
                     <div class="sp-pct">{{ total ? ((totals[i] || 0) / total * 100).toFixed(0) : 0 }}% of total effort</div>
                   </div>
                   <div>
@@ -161,17 +161,19 @@
                     <div class="wk-num">
                       WK {{ w.num }} <span class="wk-dates">{{ w.dates }}</span>
                     </div>
-                        @for (let i = 0; i < persons.length; i = i + 1) {
-                          <div class="person-line" *ngIf="(w[persons[i]] || []).length">
-                            <span class="pl-who">{{ persons[i] }}</span
-                              >@for (occ of (w[persons[i]] || []); track occ) {
-                              <span class="chore-chip">{{ occ.chore.name }}{{ occ.count > 1 ? " ×" + occ.count : "" }}</span>
+                              @for (person of persons; track person; let i = $index) {
+                                @if ((w[person] || []).length) {
+                                  <div class="person-line">
+                                    <span class="pl-who">{{ person }}</span>
+                                    @for (occ of (w[person] || []); track occ) {
+                                      <span class="chore-chip">{{ occ.chore.name }}{{ occ.count > 1 ? " ×" + occ.count : "" }}</span>
+                                    }
+                                  </div>
+                                }
                               }
-                          </div>
-                        }
-                        @if (persons.length && persons.every(p => !(w[p] || []).length)) {
-                          <div class="free-week">Wk {{ w.num }} — free</div>
-                        }
+                              @if (weekIsFree(w)) {
+                                <div class="free-week">Wk {{ w.num }} — free</div>
+                              }
                       </div>
                     }
                   </div>
