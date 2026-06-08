@@ -57,6 +57,12 @@ jobs:
         cache: 'npm'
     - name: Build the app
       run: npm ci && npm run build
+    - name: Move built site to docs root
+      run: |
+        if [ -d docs/browser ]; then
+          cp -R docs/browser/* docs/
+          rm -rf docs/browser
+        fi
     - name: Move CNAME file to docs
       run: cp CNAME ./docs
     - name: Move 404.html file to docs
