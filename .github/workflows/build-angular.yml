@@ -15,8 +15,14 @@ jobs:
         node-version: '24'
         cache: 'npm'
     - name: Install
-      run: npm i
+      run: npm ci
+    - name: Set up Chrome
+      uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: latest
     - name: Run tests
+      env:
+        CHROME_BIN: /usr/bin/google-chrome-stable
       run: npx ng test --watch=false --no-progress
   build:
     runs-on: ubuntu-latest
