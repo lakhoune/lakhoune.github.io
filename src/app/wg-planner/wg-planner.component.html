@@ -12,7 +12,7 @@
       <div class="settings-grid">
         <div class="field">
           <label>Year</label>
-          <input type="number" [(ngModel)]="year" min="2020" max="2035" />
+          <input type="number" [(ngModel)]="year" (ngModelChange)="saveDraft()" min="2020" max="2035" />
         </div>
         <div class="field persons">
           <label>People</label>
@@ -22,6 +22,7 @@
                 <input
                   type="text"
                   [(ngModel)]="persons[i]"
+                  (ngModelChange)="saveDraft()"
                   placeholder="e.g. Ben"
                 />
                 <button
@@ -94,6 +95,15 @@
             <option [value]="3">High (3 pts)</option>
           </select>
         </div>
+        <div class="field">
+          <label>Room</label>
+          <select [(ngModel)]="choreRoom">
+            <option value="">Optional</option>
+            @for (room of ROOM_OPTIONS; track room) {
+              <option [value]="room">{{ room }}</option>
+            }
+          </select>
+        </div>
         <div>
           <button class="btn-primary" (click)="addChore()">+ Add</button>
         </div>
@@ -104,29 +114,51 @@
             No chores yet — pick a template above or add one manually.
           </div>
         }
-        @for (c of chores; track c) {
-          <div class="chore-item">
-            <span class="ci-name">{{ c.name }}</span>
-            <span class="ci-freq">{{
-              FREQ_LABELS[c.freq] || c.freq + "×/yr"
-            }}</span>
-            <span
-              class="badge"
-              [ngClass]="{
-                'badge-low': c.effort === 1,
-                'badge-medium': c.effort === 2,
-                'badge-high': c.effort === 3,
-              }"
-              >{{ EFFORT_LABELS[c.effort] }}</span
-            >
-            <button class="btn-icon" (click)="removeChore(c.id)" title="Remove">
-              ✕
-            </button>
+        @for (group of choreGroups; track group.room) {
+          <div class="room-group">
+            <div class="room-name">{{ group.room }}</div>
+            @for (c of group.chores; track c.id) {
+              <div class="chore-item">
+                <span class="ci-name">{{ c.name }}</span>
+                <span class="ci-freq">{{
+                  FREQ_LABELS[c.freq] || c.freq + "×/yr"
+                }}</span>
+                <span
+                  class="badge"
+                  [ngClass]="{
+                    'badge-low': c.effort === 1,
+                    'badge-medium': c.effort === 2,
+                    'badge-high': c.effort === 3,
+                  }"
+                  >{{ EFFORT_LABELS[c.effort] }}</span
+                >
+                <button class="btn-icon" (click)="removeChore(c.id)" title="Remove">
+                  ✕
+                </button>
+              </div>
+            }
           </div>
         }
       </div>
       <div style="text-align: right; margin-top: 0.5rem">
         <span class="chore-count">{{ choreCountLabel }}</span>
+      </div>
+      <div class="file-actions">
+        <input
+          type="file"
+          accept=".csv,text/csv"
+          hidden
+          #importInput
+          (change)="importCsvFile($event)"
+        />
+        <button class="btn-ghost" type="button" (click)="importInput.click()">
+          <span class="material-icons">file_upload</span>
+          Import plan
+        </button>
+        <button class="btn-primary" type="button" (click)="exportCsv()" [disabled]="!chores.length">
+          <span class="material-icons">file_download</span>
+          Export plan
+        </button>
       </div>
       <button class="btn-success" (click)="generatePlan()">
         Generate Year Plan →
@@ -141,6 +173,10 @@
       <div class="plan-top">
         <h1 id="plan-title">{{ planTitle }}</h1>
         <div class="plan-actions">
+          <button class="btn-primary" (click)="exportCsv()" [disabled]="!chores.length">
+            <span class="material-icons">file_download</span>
+            Export
+          </button>
           <button class="btn-blue" (click)="print()">Print</button>
           <button class="btn-ghost" (click)="goBack()">← Edit</button>
         </div>
@@ -185,10 +221,12 @@
                   @if ((w[person] || []).length) {
                     <div class="person-line">
                       <span class="pl-who">{{ person }}</span>
+                      <span class="pl-total">{{ w.totals?.[person] || 0 }} pts</span>
                       @for (occ of w[person] || []; track occ) {
                         <span class="chore-chip"
                           >{{ occ.chore.name
-                          }}{{ occ.count > 1 ? " ×" + occ.count : "" }}</span
+                          }}{{ occ.count > 1 ? " ×" + occ.count : "" }}
+                          <span class="chore-effort">({{ occ.chore.effort }}pt)</span></span
                         >
                       }
                     </div>

@@ -59,7 +59,9 @@ button:active { transform: scale(0.97); }
 .btn-icon { background: none; border: none; color: #ccc; font-size: 0.95rem; cursor: pointer; padding: 0 0.3rem; }
 .btn-icon:hover { color: #e74c3c; }
 
-.chore-list { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.4rem; min-height: 2rem; }
+.chore-list { margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem; min-height: 2rem; }
+.room-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.room-name { font-size: 0.8rem; font-weight: 700; color: #555; text-transform: uppercase; letter-spacing: 0.08em; }
 .chore-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.45rem 0.75rem; background: transparent; border-radius: 7px; border: 1px solid #f0f0f0; }
 .ci-name { flex: 1; font-size: 0.88rem; font-weight: 500; }
 .ci-freq { color: #aaa; font-size: 0.76rem; }
@@ -71,6 +73,18 @@ button:active { transform: scale(0.97); }
 
 .helper-row { display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; }
 .sample-link { font-size: 0.78rem; color: #6c63ff; cursor: pointer; text-decoration: underline; }
+.file-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+.file-actions button,
+.plan-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.file-actions .material-icons,
+.plan-actions .material-icons {
+  font-size: 1rem;
+  line-height: 1;
+}
 .chore-count { font-size: 0.78rem; color: #bbb; }
 
 .empty-state { color: #ccc; font-size: 0.85rem; text-align: center; padding: 1.5rem 0; }
@@ -118,9 +132,11 @@ button:active { transform: scale(0.97); }
 .wk-dates { font-size: 0.65rem; color: #d0d0d0; font-weight: 400; margin-left: 0.35rem; }
 .person-line { display: flex; flex-wrap: wrap; gap: 0.25rem; align-items: baseline; margin: 0.1rem 0; }
 .pl-who { font-weight: 700; font-size: 0.72rem; margin-right: 0.15rem; flex-shrink: 0; }
+.pl-total { color: #777; font-size: 0.7rem; margin-right: 0.5rem; }
 .pl-a { color: #2980b9; }
 .pl-b { color: #d35400; }
-.chore-chip { background: transparent; border-radius: 3px; padding: 0.05rem 0.3rem; font-size: 0.7rem; }
+.chore-chip { background: transparent; border-radius: 3px; padding: 0.05rem 0.3rem; font-size: 0.7rem; display: inline-flex; align-items: center; gap: 0.18rem; }
+.chore-chip .chore-effort { color: #555; font-size: 0.68rem; }
 .free-week { color: #ddd; font-size: 0.68rem; font-style: italic; padding: 0.25rem 0; }
 
 @media print {

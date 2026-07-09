@@ -1,6 +1,7 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-wg-planner',
@@ -9,17 +10,21 @@ import { FormsModule } from '@angular/forms';
     changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./wg-planner.component.scss']
 })
-export class WgPlannerComponent {
+export class WgPlannerComponent implements OnInit {
   year = 2026;
   // support N persons instead of just A/B
   persons: string[] = ['Person A', 'Person B'];
   choreName = '';
   choreFreq = 52;
   choreEffort = 2;
+  choreRoom = '';
   chores: Array<any> = [];
   nextId = 1;
   activeTemplate: string | null = null;
   showPlan = false;
+  private readonly localStorageKey = 'wg-planner-draft';
+  readonly ROOM_OPTIONS = ['General', 'Kitchen', 'Bathroom', 'Living room', 'Bedroom', 'Laundry', 'Outdoor'];
+  readonly DEFAULT_ROOM = 'General';
 
   FREQ_LABELS: any = {
     365: 'Daily',
@@ -45,63 +50,63 @@ export class WgPlannerComponent {
       label: 'Shared Flat (WG)',
       desc: 'Shared spaces only — no personal chores like laundry',
       chores: [
-        { name: 'Vacuum common areas', freq: 52, effort: 2 },
-        { name: 'Mop floors', freq: 26, effort: 2 },
-        { name: 'Clean bathroom', freq: 52, effort: 3 },
-        { name: 'Scrub kitchen', freq: 52, effort: 2 },
-        { name: 'Wipe down surfaces', freq: 52, effort: 1 },
-        { name: 'Take out trash', freq: 52, effort: 1 },
-        { name: 'Grocery run', freq: 52, effort: 2 },
-        { name: 'Descale bathroom', freq: 12, effort: 2 },
-        { name: 'Clean oven', freq: 4, effort: 3 },
-        { name: 'Window cleaning', freq: 4, effort: 3 }
+        { name: 'Vacuum common areas', freq: 52, effort: 2, room: 'Living room' },
+        { name: 'Mop floors', freq: 26, effort: 2, room: 'Living room' },
+        { name: 'Clean bathroom', freq: 52, effort: 3, room: 'Bathroom' },
+        { name: 'Scrub kitchen', freq: 52, effort: 2, room: 'Kitchen' },
+        { name: 'Wipe down surfaces', freq: 52, effort: 1, room: 'Living room' },
+        { name: 'Take out trash', freq: 52, effort: 1, room: 'General' },
+        { name: 'Grocery run', freq: 52, effort: 2, room: 'General' },
+        { name: 'Descale bathroom', freq: 12, effort: 2, room: 'Bathroom' },
+        { name: 'Clean oven', freq: 4, effort: 3, room: 'Kitchen' },
+        { name: 'Window cleaning', freq: 4, effort: 3, room: 'General' }
       ]
     },
     couple: {
       label: 'Couple',
       desc: 'Full household including laundry, ironing & cooking',
       chores: [
-        { name: 'Vacuum', freq: 52, effort: 2 },
-        { name: 'Mop floors', freq: 26, effort: 2 },
-        { name: 'Clean bathroom', freq: 12, effort: 3 },
-        { name: 'Scrub kitchen', freq: 52, effort: 2 },
-        { name: 'Wipe down surfaces', freq: 52, effort: 1 },
-        { name: 'Take out trash', freq: 52, effort: 1 },
-        { name: 'Grocery run', freq: 52, effort: 2 },
-        { name: 'Do laundry', freq: 52, effort: 2 },
-        { name: 'Ironing', freq: 26, effort: 2 },
-        { name: 'Cook dinner', freq: 156, effort: 2 },
-        { name: 'Clean oven', freq: 4, effort: 3 },
-        { name: 'Window cleaning', freq: 4, effort: 3 }
+        { name: 'Vacuum', freq: 52, effort: 2, room: 'Living room' },
+        { name: 'Mop floors', freq: 26, effort: 2, room: 'Living room' },
+        { name: 'Clean bathroom', freq: 12, effort: 3, room: 'Bathroom' },
+        { name: 'Scrub kitchen', freq: 52, effort: 2, room: 'Kitchen' },
+        { name: 'Wipe down surfaces', freq: 52, effort: 1, room: 'Living room' },
+        { name: 'Take out trash', freq: 52, effort: 1, room: 'General' },
+        { name: 'Grocery run', freq: 52, effort: 2, room: 'General' },
+        { name: 'Do laundry', freq: 52, effort: 2, room: 'Laundry' },
+        { name: 'Ironing', freq: 26, effort: 2, room: 'Laundry' },
+        { name: 'Cook dinner', freq: 156, effort: 2, room: 'Kitchen' },
+        { name: 'Clean oven', freq: 4, effort: 3, room: 'Kitchen' },
+        { name: 'Window cleaning', freq: 4, effort: 3, room: 'General' }
       ]
     },
     house: {
       label: 'House & Garden',
       desc: 'Indoor chores plus lawn, garden & seasonal outdoor tasks',
       chores: [
-        { name: 'Vacuum', freq: 52, effort: 2 },
-        { name: 'Mop floors', freq: 26, effort: 2 },
-        { name: 'Clean bathroom', freq: 12, effort: 3 },
-        { name: 'Scrub kitchen', freq: 52, effort: 2 },
-        { name: 'Take out trash', freq: 52, effort: 1 },
-        { name: 'Grocery run', freq: 52, effort: 2 },
-        { name: 'Mow lawn', freq: 26, effort: 2 },
-        { name: 'Garden maintenance', freq: 12, effort: 3 },
-        { name: 'Rake leaves / snow', freq: 4, effort: 2 },
-        { name: 'Clean oven', freq: 4, effort: 3 },
-        { name: 'Window cleaning', freq: 4, effort: 3 },
-        { name: 'Gutter clearing', freq: 2, effort: 3 }
+        { name: 'Vacuum', freq: 52, effort: 2, room: 'Living room' },
+        { name: 'Mop floors', freq: 26, effort: 2, room: 'Living room' },
+        { name: 'Clean bathroom', freq: 12, effort: 3, room: 'Bathroom' },
+        { name: 'Scrub kitchen', freq: 52, effort: 2, room: 'Kitchen' },
+        { name: 'Take out trash', freq: 52, effort: 1, room: 'General' },
+        { name: 'Grocery run', freq: 52, effort: 2, room: 'General' },
+        { name: 'Mow lawn', freq: 26, effort: 2, room: 'Outdoor' },
+        { name: 'Garden maintenance', freq: 12, effort: 3, room: 'Outdoor' },
+        { name: 'Rake leaves / snow', freq: 4, effort: 2, room: 'Outdoor' },
+        { name: 'Clean oven', freq: 4, effort: 3, room: 'Kitchen' },
+        { name: 'Window cleaning', freq: 4, effort: 3, room: 'General' },
+        { name: 'Gutter clearing', freq: 2, effort: 3, room: 'Outdoor' }
       ]
     },
     minimal: {
       label: 'Minimal',
       desc: 'Bare essentials — just enough to keep things tidy',
       chores: [
-        { name: 'Vacuum', freq: 52, effort: 2 },
-        { name: 'Clean bathroom', freq: 26, effort: 3 },
-        { name: 'Scrub kitchen', freq: 26, effort: 2 },
-        { name: 'Take out trash', freq: 52, effort: 1 },
-        { name: 'Window cleaning', freq: 2, effort: 3 }
+        { name: 'Vacuum', freq: 52, effort: 2, room: 'Living room' },
+        { name: 'Clean bathroom', freq: 26, effort: 3, room: 'Bathroom' },
+        { name: 'Scrub kitchen', freq: 26, effort: 2, room: 'Kitchen' },
+        { name: 'Take out trash', freq: 52, effort: 1, room: 'General' },
+        { name: 'Window cleaning', freq: 2, effort: 3, room: 'General' }
       ]
     }
   };
@@ -112,8 +117,32 @@ export class WgPlannerComponent {
   total = 0;
   months: any[] = [];
 
+  constructor(private _snackBar: MatSnackBar) {}
+
+  ngOnInit() {
+    this.promptRestoreDraft();
+  }
+
   templateKeys() {
     return Object.keys(this.TEMPLATES);
+  }
+
+  get choreGroups() {
+    const groups = new Map<string, any[]>();
+    for (const chore of this.chores) {
+      const room = chore.room || this.DEFAULT_ROOM;
+      if (!groups.has(room)) groups.set(room, []);
+      groups.get(room)!.push(chore);
+    }
+
+    const ordered = this.ROOM_OPTIONS.filter(r => groups.has(r)).map(room => ({
+      room,
+      chores: groups.get(room) || []
+    }));
+    for (const [room, chores] of groups) {
+      if (!this.ROOM_OPTIONS.includes(room)) ordered.push({ room, chores });
+    }
+    return ordered;
   }
 
   get chorePts(): number {
@@ -135,30 +164,42 @@ export class WgPlannerComponent {
   addChore() {
     const name = (this.choreName || '').trim();
     if (!name) return;
-    this.chores.push({ id: this.nextId++, name, freq: +this.choreFreq, effort: +this.choreEffort });
+    this.chores.push({
+      id: this.nextId++,
+      name,
+      freq: +this.choreFreq,
+      effort: +this.choreEffort,
+      room: this.choreRoom || this.DEFAULT_ROOM
+    });
     this.choreName = '';
+    this.choreRoom = '';
+    this.saveDraft();
   }
 
   addPerson(name?: string) {
     const n = (name || '').trim();
     this.persons.push(n || `Person ${this.persons.length + 1}`);
+    this.saveDraft();
   }
 
   removePerson(idx: number) {
     if (this.persons.length <= 1) return;
     this.persons.splice(idx, 1);
+    this.saveDraft();
   }
 
   removeChore(id: number) {
     this.chores = this.chores.filter((c) => c.id !== id);
     this.activeTemplate = null;
+    this.saveDraft();
   }
 
   loadTemplate(key: string) {
     const tpl = this.TEMPLATES[key];
     if (!tpl) return;
-    this.chores = tpl.chores.map((c: any) => ({ ...c, id: this.nextId++ }));
+    this.chores = tpl.chores.map((c: any) => ({ ...c, id: this.nextId++, room: c.room || this.DEFAULT_ROOM }));
     this.activeTemplate = key;
+    this.saveDraft();
   }
 
   weekStartDate(year: number, w: number) {
@@ -230,7 +271,12 @@ export class WgPlannerComponent {
       }
 
       const mapping: any = {};
-      for (let p = 0; p < names.length; p++) mapping[names[p]] = weekSlots[p];
+      const weekTotals: any = {};
+      for (let p = 0; p < names.length; p++) {
+        mapping[names[p]] = weekSlots[p];
+        weekTotals[names[p]] = weekSlots[p].reduce((sum: number, occ: any) => sum + (occ.chore.effort || 0) * occ.count, 0);
+      }
+      mapping.totals = weekTotals;
       schedule[w] = mapping;
     }
 
@@ -261,6 +307,200 @@ export class WgPlannerComponent {
 
     this.showPlan = true;
     setTimeout(() => window.scrollTo(0,0), 0);
+  }
+
+  exportCsv() {
+    if (!this.chores.length) {
+      return alert('Add at least one chore first.');
+    }
+
+    const lines: string[] = [];
+    lines.push(`#year,${this.year}`);
+    for (const person of this.persons) {
+      lines.push(`#person,${this.escapeCsv(person)}`);
+    }
+    lines.push('name,freq,effort,room');
+    for (const chore of this.chores) {
+      lines.push([
+        this.escapeCsv(chore.name),
+        chore.freq,
+        chore.effort,
+        this.escapeCsv(chore.room || this.DEFAULT_ROOM)
+      ].join(','));
+    }
+
+    const csv = lines.join('\n');
+    const filename = `chore-plan-${this.year || new Date().getFullYear()}.csv`;
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = filename;
+    anchor.click();
+    URL.revokeObjectURL(url);
+  }
+
+  importCsvFile(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (!input.files?.length) return;
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      const text = reader.result as string;
+      try {
+        this.loadFromCsv(text);
+      } catch (error: any) {
+        alert('Unable to import CSV: ' + (error?.message || error));
+      }
+    };
+    reader.readAsText(file, 'utf-8');
+    input.value = '';
+  }
+
+  private loadFromCsv(content: string) {
+    const rows = content.replace(/\r\n/g, '\n').split('\n').map(line => line.trim()).filter(line => line.length > 0);
+    const persons: string[] = [];
+    const chores: any[] = [];
+    let year = this.year;
+    let headerParsed = false;
+
+    for (const line of rows) {
+      if (line.startsWith('#')) {
+        const [key, ...vals] = this.parseCsvLine(line.substring(1));
+        const value = vals.join(',').trim();
+        if (key.toLowerCase() === 'year') {
+          const parsedYear = Number(value);
+          if (!Number.isFinite(parsedYear) || parsedYear <= 0) {
+            throw new Error('Invalid year in CSV.');
+          }
+          year = parsedYear;
+        } else if (key.toLowerCase() === 'person') {
+          if (value) persons.push(value);
+        }
+        continue;
+      }
+
+      const cells = this.parseCsvLine(line);
+      if (!headerParsed) {
+        const normalized = cells.map(cell => cell.trim().toLowerCase());
+        if (normalized[0] !== 'name' || normalized[1] !== 'freq' || normalized[2] !== 'effort') {
+          throw new Error('CSV header must be: name,freq,effort[,room]');
+        }
+        headerParsed = true;
+        continue;
+      }
+
+      const name = cells[0].trim();
+      const freq = Number(cells[1]);
+      const effort = Number(cells[2]);
+      const room = cells.length >= 4 ? cells[3].trim() || this.DEFAULT_ROOM : this.DEFAULT_ROOM;
+      if (!name || !Number.isFinite(freq) || !Number.isFinite(effort)) {
+        continue;
+      }
+      chores.push({ id: this.nextId++, name, freq, effort, room });
+    }
+
+    if (!headerParsed) {
+      throw new Error('CSV file missing header row.');
+    }
+    if (!chores.length) {
+      throw new Error('CSV file contains no chores.');
+    }
+    this.persons = persons.length ? persons : this.persons;
+    this.year = year;
+    this.chores = chores;
+    this.activeTemplate = null;
+    this.showPlan = false;
+    this.totals = [];
+    this.total = 0;
+    this.saveDraft();
+  }
+
+  private escapeCsv(value: string) {
+    const text = String(value ?? '');
+    if (/[,"\n]/.test(text)) {
+      return `"${text.replace(/"/g, '""')}"`;
+    }
+    return text;
+  }
+
+  private parseCsvLine(line: string) {
+    const cells: string[] = [];
+    let current = '';
+    let inQuotes = false;
+
+    for (let i = 0; i < line.length; i++) {
+      const char = line[i];
+      if (inQuotes) {
+        if (char === '"') {
+          if (line[i + 1] === '"') {
+            current += '"';
+            i++;
+          } else {
+            inQuotes = false;
+          }
+        } else {
+          current += char;
+        }
+      } else if (char === '"') {
+        inQuotes = true;
+      } else if (char === ',') {
+        cells.push(current);
+        current = '';
+      } else {
+        current += char;
+      }
+    }
+    cells.push(current);
+    return cells;
+  }
+
+  saveDraft() {
+    try {
+      const draft = {
+        year: this.year,
+        persons: this.persons,
+        chores: this.chores,
+      };
+      localStorage.setItem(this.localStorageKey, JSON.stringify(draft));
+    } catch {
+      // ignore storage failures silently
+    }
+  }
+
+  private loadDraft() {
+    try {
+      const raw = localStorage.getItem(this.localStorageKey);
+      if (!raw) return null;
+      const draft = JSON.parse(raw);
+      if (!draft || !Array.isArray(draft.persons) || !Array.isArray(draft.chores)) return null;
+      return draft;
+    } catch {
+      return null;
+    }
+  }
+
+  private promptRestoreDraft() {
+    const draft = this.loadDraft();
+    if (!draft) return;
+
+    const snack = this._snackBar.open('Restore last chore plan draft?', 'Restore', { duration: 5000 });
+    snack.onAction().subscribe(() => {
+      this.restoreDraft(draft);
+      this._snackBar.open('Draft restored', undefined, { duration: 2500 });
+    });
+  }
+
+  private restoreDraft(draft: any) {
+    this.year = draft.year || this.year;
+    this.persons = Array.isArray(draft.persons) && draft.persons.length ? draft.persons : this.persons;
+    this.chores = Array.isArray(draft.chores) ? draft.chores.map((c: any) => ({ ...c, id: c.id ?? this.nextId++ })) : this.chores;
+    const maxId = this.chores.length ? Math.max(this.nextId, ...this.chores.map((c: any) => c.id || 0)) : this.nextId;
+    this.nextId = maxId + 1;
+    this.activeTemplate = null;
+    this.showPlan = false;
+    this.totals = [];
+    this.total = 0;
   }
 
   weekIsFree(w: any) {
